@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 2 | Real</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"], ["$", "$"]],
+        displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+      },
+      options: {
+        skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div>
+        <p class="brand-cn">Macro Study Notes</p>
+        <p class="brand-en">Xinyu Zhou</p>
+      </div>
+    </div>
+    <nav class="topnav">
+      <a href="index.html">概览</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="micro_foundation.html">Micro Foundations</a>
+      <a class="active" href="real.html">Real</a>
+      <a href="monetary.html">Monetary</a>
+      <a href="methods.html">Methods</a>
+      <a href="open.html">Open</a>
+      <a href="uncertainty.html">Uncertainty</a>
+      <a href="institutions.html">Institutions</a>
+    </nav>
+  </header>
+
+  <main class="layout with-sidebar">
+    <aside class="sidebar card">
+      <h2>Content</h2>
+      <p style="margin:0;color:var(--muted);font-size:0.92rem;">Click to navigate</p>
+      <ul class="toc" aria-label="Real page table of contents">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#solow">Solow Model</a></li>
+        <li><a href="#rck">RCK</a></li>
+        <li><a href="#stochastic">Growth</a></li>
+        <li><a href="#rbc">RBC</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <section id="overview" class="hero card anchor">
+        <p class="tag">Real Economy</p>
+        <h1>Real Model Overview</h1>
+        <p>Introduction</p>
+      </section>
+
+      <section id="solow" class="card anchor">
+        <h2>Solow Model</h2>
+        
+        <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+          <article class="module-card">
+            <h3>Set up</h3>
+            <p><strong>Production Function：</strong></p>
+            \[
+            Y_t = F(K_t, A_t L_t)
+            \]
+            <p><strong>Where：</strong></p> 
+            \[
+            K_{t+1} = (1-\delta)K_t + I_t, \quad
+            I_t = sY_t, 
+            \]
+            \[  
+            A_{t+1} = (1+g)A_t, \quad L_{t+1} = (1+n)L_t
+            \]
+            <p><strong>Intensive Form：</strong></p>
+            \[
+            y_t = \frac{Y_t}{A_t L_t} \equiv f(k_t), \quad k_t \equiv \frac{K_t}{A_t L_t}
+            \]
+          </article>
+
+          <article class="module-card">
+            <h3>Assumption & Condition</h3>
+            <p><strong>Assumption</strong></p>
+            <ul style="margin: 10px 0; font-size: 0.95rem;">
+              <li>$F_K > 0, F_{KK} < 0$ (Concave)</li>
+              <li>Constant return to scale (CRS):
+                \[
+                F(\lambda K, \lambda AL) = \lambda F(K,AL), \quad \forall \lambda > 0
+                \]
+              </li>
+            </ul>
+            <p><strong>Inada Condition</strong></p>
+            \[
+            F_K(0,AL) = \infty, \quad F_K(\infty,AL) = 0
+            \] 
+            or in intensive form:      
+            \[
+            f'(0) = \infty, \quad f'(\infty) = 0
+            \]
+          </article>
+
+          <article class="module-card">
+            <h3>Continuous Time</h3>
+            Define the <strong>derivative of its continuous time</strong> to describe its <strong>rate of change</strong>: t = 0, $\Delta$, 2$\Delta$, ...
+            <p><strong>For $K$</strong></p>
+            \[
+            K_{t + \Delta} - K_t = I_t \Delta - \delta K_t \Delta
+            \]
+            \[
+            \dot{K}(t) = \lim_{\Delta \to 0} \frac{K(t+\Delta) - K(t)}{\Delta} = sF(K) - \delta K
+            \]
+            <p><strong>For $A,L$</strong></p>
+            \[
+            A_{t+ \Delta} = (1 + g) A_t = e^{\ln(1+g)} A_t \approx e^{g \Delta} A_t where g \rightarrow 0, ln(1+g) \approx g
+            \]
+            \[
+            \dot{A}(t) = gA(t) = \lim_{\Delta \to 0} \frac{A_{t+\Delta} - A_{t}}{\Delta} = \frac{e^{g \Delta} - 1}{\Delta}A(t) = \frac{dA(t)}{dt}
+            \]
+            \[
+            \frac{d\ln A(t)}{dt} = \frac{1}{A(t)} \frac{dA(t)}{dt} = g
+            \]
+            <p>So as the L:</p>
+            \[
+            \dot{L}(t) = nL(t), \quad \frac{d\ln L(t)}{dt} = n
+            \]
+          </article>
+
+          <article class="module-card">
+            <h3>Capital Accumulation</h3>
+            <p><strong>Discrete:</strong></p>
+            \[
+            k_{t+1} = \frac{(1-\delta)k_t + sf(k_t)}{(1+g)(1+n)}
+            \]
+            <p><strong>Continous:</strong></p>
+            \[
+            \dot{K}(t) = sF(K(t), A(t)L(t)) - \delta K(t)
+            \]
+            \[
+            \frac{d ln(k(t))}{dt} = \frac{d ln(K(t))}{dt} - \frac{d ln(A(t))}{dt} - \frac{d ln(L(t))}{dt} = \frac{\dot{K}(t)}{K(t)} - g - n
+            \]
+            \[
+            \frac{\dot{k}(t)}{k(t)} = \frac{\dot{K}(t)}{K(t)} - \frac{\dot{A}(t)}{A(t)} - \frac{\dot{L}(t)}{L(t)}
+            \]
+            \[
+            \dot{k}(t) =[ \frac{\dot{K}(t)}{A(t)L(t)k(t)} - g - n ] k(t) = sf(k(t)) - (\delta + g + n)k(t) = \psi k(t)
+            \]
+          </article>
+
+          <article class="module-card">
+            <h3>Steady State</h3>
+            <p><strong>Definition：</strong>$k_{t+1} = k_t$ and $\dot{k} = 0$ </p>
+            \[
+            sf(k^*) = (\delta+g+n+gn)k^*, \quad sf(k^*) = (\delta+g+n)k^*
+            \]
+          </article>
+
+          <article class="module-card">
+            <h3>Comparative Dynamic</h3>
+            <p><strong>For saving rate：</strong>$sf(k(s))= (\delta+g+n)k(s)$</p>
+            \[
+            k'(s) = - \frac{f(k^*)}{sf'(k^*) - (\delta+g+n)} > 0
+            \]
+            <p style="font-size: 0.9rem; color: var(--muted);">where molecule(slope) is always positive under s-s</p>
+          </article>
+
+          <article class="module-card">
+            <h3>Golden Rule</h3>
+            <p><strong>Definition：</strong>What should the savings rate be in order to maximize the level of consumption?</p>
+            <p><strong>1、Consumption maximization：</strong></p>
+            \[
+            c^* = f(k^*) - (\delta+g+n)k^* = 0
+            \]
+            \[
+            c'(s) = f'(k^*) - (\delta+g+n) = 0
+            \]
+            <p style="font-size: 0.9rem; color: var(--muted);">
+              Hence, if $f'(k^*) > \delta + g + n$, then $c'(s) > 0$, which means that increasing the saving rate will increase consumption. Vice versa.
+            </p>
+
+            <p><strong>2、Optimal Saving Rate：</strong></p>
+            \[
+            f'(k)k^* = sf(k^*) = (\delta+g+n)k^* \Rightarrow f'(k^*)k^* = f(k^*)
+            \]
+            \[
+            s = \frac{f'(k^*)k^*}{f(k^*)}
+            \]
+          </article>
+
+          <article class="module-card">
+            <h3>Speed of Convergence</h3>
+            <p><strong>Definition：</strong>How fast does the economy converge to the steady state?</p>
+            \[
+            \psi'(k^*) = \frac{sf'(k^*)k^*}{k^*} - (\delta + g + n) = \frac{sf'(k^*)k^*}{f(k^*)}(\delta + g + n) - (\delta + g + n)
+            \]
+            \[
+            \psi'(k^*) = (f'(k^*)k^*/f(k^*) - 1)(\delta + g + n) < 0
+            \]  
+            <p style="font-size: 0.9rem; color: var(--muted);">
+            where $\epsilon \equiv f'(k^*)k^*/f(k^*)$ is the degree of concavity. $\delta + g + n$ is effective depreciation rate.
+            </p>
+            <p style="font-size: 0.9rem; color: var(--muted);">
+            If $\epsilon$ is close to 1(higher), the speed of convergence is slow. If $\epsilon = 1$, never converge.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="rck" class="card anchor">
+        <h2>RCK / Ramsey</h2>
+        <p>占位内容：Euler 方程、TVC、相图。</p>
+      </section>
+
+      <section id="stochastic" class="card anchor">
+        <h2>随机增长</h2>
+        <p>占位内容：技术冲击 AR(1)、线性化。</p>
+      </section>
+
+      <section id="rbc" class="card anchor">
+        <h2>RBC</h2>
+        <p>占位内容：家庭-企业-市场出清与 IRF。</p>
+      </section>
+    </section>
+  </main>
+
+  <script src="scrollspy.js"></script>
+</body>
+</html>

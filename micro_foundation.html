@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Micro | 微观基础</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"], ["$", "$"]],
+        displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+      },
+      options: {
+        skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div>
+        <p class="brand-cn">Macro Study Notes</p>
+        <p class="brand-en">Xinyu Zhou</p>
+      </div>
+    </div>
+    <nav class="topnav">
+      <a href="index.html">Overview</a>
+      <a href="concepts.html">Concepts</a>
+      <a class="active" href="micro_foundation.html">Micro Foundations</a>
+      <a href="real.html">Real</a>
+      <a href="monetary.html">Monetary</a>
+      <a href="methods.html">Methods</a>
+      <a href="open.html">Open</a>
+      <a href="uncertainty.html">Uncertainty</a>
+      <a href="institutions.html">Institutions</a>
+    </nav>
+  </header>
+
+  <main class="layout with-sidebar">
+    <aside class="sidebar card">
+      <h2>本页导航</h2>
+      <p style="margin:0;color:var(--muted);font-size:0.92rem;">点击即可跳转到对应小节。</p>
+      <ul class="toc" aria-label="Micro Foundations table of contents">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#utility-function">Utility Function</a></li>
+        <li><a href="#representative">代表性消费者</a></li>
+        <li><a href="#optimization">基本优化问题</a></li>
+        <li><a href="#comparative">比较动态</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <section id="overview" class="hero card anchor">
+        <p class="tag">Micro Foundations</p>
+        <h1>Utility Function & Optimal Choice</h1>
+        <p>Nowadays, macro models often build on micro foundations, especially in the context of representative agents and optimization problems.</p>
+      </section>
+
+
+      
+    <section id="utility-basics" class="card anchor">
+        <h2>Utility Function</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+            <article class="module-card">
+                <p>Utility Function comes from <strong>Data</strong></p>
+                <p><strong>Properties:</strong></p>
+                <ul>
+                    <li>Monotonicity:More is better than less.</li>
+                    <li>Concavity: People is rational.</li>
+                    <li>Completeness：Any two bundles can be compared.</li>
+                    <li>Transitivity：If A $\succeq$ B & B$\succeq$ C, then A$\succeq$ C</li>
+                    <li>Continuity：Preferences are continuous in consumption bundles.</li>
+                </ul>
+                <p><strong>Revealed Preference:</strong> \(
+                \left\{\begin{array}{l}
+                Weak: x_i\;R\;x_j \Leftrightarrow x_i\; \succeq \;x_j\\
+                Strong: x_i\;P\;x_j \Leftrightarrow x_i\; \succ \;x_j
+                \end{array}\right.\)
+                </p>
+            </article>
+        
+            <article class="module-card">
+                <h3>Afriat Theorem</h3>
+                <p><strong>GARP:</strong> Genralized Axiom of Revealed Preference</p>
+                <ul>
+                <li>Data set D satisfies GARP if $x_i$ P to $x_j$, $i \rightarrow i_1 \rightarrow i_2 \rightarrow ... \rightarrow i_n \rightarrow j$,
+                    then $x_j$ cannot be R to $x_i$.
+                </li>
+                </ul>
+                <p>Which is key assumption of Afriat Thm.</p>
+                <p><strong>Afriat Theorem</strong></p>
+                <ul>
+                    <li>U can represent D if $x_i$ is a solution to max u(x) s.t. $p_i x \leq p_i x_i$.(i.e. to find a u which solution is $x_i$)</li>
+                    <li>If D satisfies GARP, then exists a utility function u that is continuous, strictly increasing, and concave.</li>
+                </ul>
+            </article>
+
+            <article class="module-card">
+                <h3>Expected Utility</h3>
+                <p><strong>Set up</strong></p>
+                $
+                EU = \sum p_i u(x_i)
+                $ , where p is the probability of outcome i, and u(x i) is the utility of that outcome.
+                <p><strong>Lottery:</strong></p>L = {$L_1,L_2,...$} represent the probobility diatribution of X.
+                <p><strong>Independence condition:</strong></p>For L: $u(L_1) \geq u(L_2) \; iff\; u(\alpha L_1 + (1-\alpha)L_3) \geq u(\alpha L_2 + (1-\alpha)L_3)$
+                <h4>Expected utility thm.</h4>
+                \[
+                U(\alpha L_1 + (1-\alpha)L_2) = \alpha U(L_1) + (1-\alpha)U(L_2)
+                \]
+            </article>
+        </div>
+    </section>
+      
+    <section id="representative" class="card anchor">
+        <h2>代表性消费者</h2>
+        <h3>相同效用函数</h3>
+        <ul>
+          <li>若所有个体偏好相同且面临同价，则总需求可由代表性消费者刻画。</li>
+          <li>此时聚合问题等价于对单一效用的支出加总（在可加/可分假设下）。</li>
+        </ul>
+
+        <h3>相同收入水平或相同收入分布</h3>
+        <ul>
+          <li>Gorman 形式或同度偏好使代表性消费者在不同收入分布下仍成立。</li>
+          <li>若不满足这些结构性假设，收入分配会改变聚合需求，代表性假设失效。</li>
+        </ul>
+
+        <p style="color:var(--muted);">备注：代表性消费者为宏观建模提供便利，但在存在异质性时需谨慎使用。</p>
+    </section>
+
+      <section id="optimization" class="card anchor">
+        <h2>基本优化问题</h2>
+        <ul>
+          <li>消费者：在预算约束下最大化效用——拉格朗日、一阶条件。</li>
+          <li>企业：产出或利润最大化，决策变量为劳动、资本等。</li>
+          <li>最优条件通常以边际收益=边际成本或边际替代率=价格表示。</li>
+          <li>动态框架中加入贝尔曼方程，导出 Euler 方程。</li>
+        </ul>
+      </section>
+
+      <section id="comparative" class="card anchor">
+        <h2>比较动态</h2>
+        <ul>
+          <li>分析参数变化（收入、价格、利率）下最优解的方向。</li>
+          <li>使用隐函数定理进行比较静态；动态时研究路径与稳态变化。</li>
+          <li>代表性消费者假设下，收入分配变化如何影响聚合需求。</li>
+          <li>常见应用包括风险态度变化对储蓄、税率变动对供给等。</li>
+       </ul>
+      </section>
+    </section>
+  </main>
+
+  <script src="scrollspy.js"></script>
+</body>
+</html>
