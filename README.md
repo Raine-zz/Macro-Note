@@ -10,6 +10,6 @@ Simple macroeconomic notes created by myself, including what I learn in class, r
 - Representative consumer
 - Optimal Question
 ##### Real Economy
--Solow model
+- Solow model
 
 You can contact me via email(zhouxinyu_iesr23@outlook.com).
