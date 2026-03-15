@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+
+\title{Part of MP model}
+\begin{document}
+\maketitle
+\section{Basic Setting: Value Function}
+	\begin{enumerate}
+		\item For workers:
+		\[
+		W = w + \beta [(1-\delta)W + \delta U]
+		\]
+		\[
+		U = b + \beta [f(\theta)W + (1 - f(\theta))U]
+		\]
+		\item For Firms
+		\[
+		F = (x - w) + \beta [(1 - \delta)F + \delta V]
+		\]
+		\[
+		V = -c + \beta [q(\theta)F + (1 - q(\theta))V]
+		\]
+	\end{enumerate}
+
+	Here, as zero-profit condition(V = 0), we have 
+	\begin{align}
+	&F = \frac{x - w}{1 - \beta(1 - \delta)}  = \frac{c}{\beta q(\theta)} \\
+	&W = \frac{w + \delta\beta)U}{1 - \beta(1-\delta)} \nonumber \\
+	&W - U = \frac{w - (1-\beta)U}{1 - \beta(1-\delta)} 
+	\end{align}
+
+	
+\section{Optimal Wage}
+	Wage w maximize Nash product:
+	\[
+	\max_w \; (W - U)^\gamma (F - V)^{1-\gamma}
+	\]
+	F.O.C.:
+	\[
+	(1-\gamma)(W - U) = \gamma F
+	\]
+	As equation (1) \& (2), we can rewrite the maximization function:
+	\[
+	\max_w \; \left[ \frac{w - (1-\beta)U}{1 - \beta(1-\delta)} \right]^\gamma 
+	\left[ \frac{x - w}{1 - \beta(1-\delta)} \right]^{1-\gamma}
+	\]
+	F.O.C:
+	\[
+	\frac{\gamma}{w - (1-\beta)U} = \frac{1 - \gamma}{x - w}
+	\]
+	Which can be solved:
+	\begin{equation}
+		w = \gamma x + (1-\gamma)(1-\beta)U
+	\end{equation}
+	To calculate the unemployment value U:
+	\begin{align*}
+		&U = b + \beta \left[ f(\theta) W + (1 - f(\theta)) U \right] \\
+		(1-\beta)&U = b + \beta f(\theta)(W - U) \\
+		(1-\beta)&U = b + \beta f(\theta) \cdot \frac{\gamma}{1-\gamma} \cdot \frac{c}{\beta q(\theta)} \\
+		(1-\beta)&U = b + \frac{\gamma}{1-\gamma} c \theta \\ 
+	\end{align*}
+	Finally, we can bring the U into equation(3):
+	\begin{align*}
+	w &= \gamma x + (1-\gamma) \left[ b + \frac{\gamma}{1-\gamma} c \theta \right] \\
+	w &= (1-\gamma)b + \gamma x + \gamma c \theta
+	\end{align*}
+	The solution\footnote{the solution in the slide\textit{L25\_26}is  \(w = (1-\gamma)(1-\delta)b + \gamma(x + c\theta)(1-\delta) \) which is different from what I found. I re-drive according to the note usig the parameters in the slide.} is :
+	\begin{equation}
+		\boxed{w = (1-\gamma)b + \gamma(x + c\theta)} 
+	\end{equation}
+
+\section{Steady-state} 
+	Steady state\footnote{If the wage is different, so as the steady state, although the specific answer slide was not provided.}($u,w,\theta$) solves:
+	\begin{align}
+		\frac{c}{\beta q(\theta)} &= \frac{x - w(\theta)}{1 - \beta(1 - \delta)}   \\
+		w(\theta) &= (1-\gamma)b + \gamma(x + c\theta) \\
+		u &= \frac{\delta}{\delta + f(\theta)}
+	\end{align}
+	With \(m(u, v) = a u^{\alpha} v^{1-\alpha}\),
+	\[
+	f(\theta) = a \theta^{1-\alpha}, \quad q(\theta) = a \theta^{-\alpha}.
+	\]
+	bring (6) into (5)
+	\[
+	\frac{c}{\beta} \cdot \frac{1 - \beta(1-\delta)}{a} = \bigl[ (1-\gamma)(x - b) - \gamma c \theta \bigr] \theta^{-\alpha}.
+	\]
+	Under this matching function, $\theta$ doesn't have closed-form solution.
+	
+
+\end{document}
