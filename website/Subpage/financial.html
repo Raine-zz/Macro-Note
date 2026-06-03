@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial | Frictions & Crises</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]], displayMath: [["\\[", "\\]"], ["$$", "$$"]] },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div><p class="brand-cn">Macro Study Notes</p><p class="brand-en">Xinyu Zhou</p></div>
+    </div>
+    <nav class="topnav">
+      <a href="../index.html">Overview</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="micro_foundation.html">Micro Foundations</a>
+      <a href="growth.html">Growth</a>
+      <a href="short_run.html">Short Run</a>
+      <a href="monetary.html">Monetary</a>
+      <a href="open.html">Open</a>
+      <a href="labor.html">Labor</a>
+      <a class="active" href="financial.html">Financial</a>
+      <a href="methods.html">Methods</a>
+    </nav>
+  </header>
+
+  <main class="layout with-sidebar">
+    <aside class="sidebar card">
+      <h2>Content</h2>
+      <p style="margin:0;color:var(--muted);font-size:0.92rem;">Click to navigate</p>
+      <ul class="toc">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#borrowing">Borrowing &amp; Saving in Small Open Economy</a></li>
+        <li><a href="#asset-pricing">Consumption-Based Asset Pricing</a></li>
+        <li><a href="#amplification">Financial Amplification</a></li>
+        <li><a href="#houses-atm">Houses as ATM</a></li>
+        <li><a href="#mortgage">Mortgage Formulation</a></li>
+        <li><a href="#great-recession">The Great Recession</a></li>
+        <li><a href="#shadow-banking">Shadow Banking System</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <section id="overview" class="hero card anchor">
+        <p class="tag">Module 8</p>
+        <h1>Financial Frictions &amp; Crises</h1>
+        <p>How do financial market imperfections amplify shocks? The financial amplification mechanism shows how collateral constraints create a feedback loop between asset prices and borrowing, turning small shocks into large recessions.</p>
+      </section>
+
+      <!-- ========== BORROWING ========== -->
+      <section id="borrowing" class="card anchor">
+        <h2>Borrowing &amp; Saving in a Small Open Economy</h2>
+
+        <article class="module-card">
+          <h3>Setup</h3>
+          <p>Households maximize $u(c_1) + \beta u(c_2)$ subject to:</p>
+          <p>$c_1 = y_1 + d_1, \quad c_2 + d_1(1+r^*) = y_2, \quad d_1 \leq \kappa y_1$</p>
+          <p>where $d_1$ is debt and $\kappa$ is the borrowing limit (fraction of income).</p>
+          <p>Under $\beta(1+r^*) = 1$, unconstrained consumption is flat: $c_1^u = c_2^u = \frac{1+r^*}{2+r^*} y^{PDV}$.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>With Binding Constraint</h3>
+          <p>When $d_1^u > \kappa y_1$, the constraint binds: $d_1 = \kappa y_1$.</p>
+          <div class="key-eq">
+            $c_1 = (1 + \kappa)y_1, \quad c_2 = y_2 - \kappa y_1(1 + r^*)$
+          </div>
+          <p>The household can no longer perfectly smooth consumption. A <strong>credit crunch</strong> (decline in $\kappa$) forces $c_1$ down and $c_2$ up, reducing welfare.</p>
+        </article>
+      </section>
+
+      <!-- ========== ASSET PRICING ========== -->
+      <section id="asset-pricing" class="card anchor">
+        <h2>Consumption-Based Asset Pricing</h2>
+
+        <article class="module-card">
+          <h3>Lucas Tree Model (Two-Period)</h3>
+          <p>Household buys an asset $a_1$ at price $p_1$ that pays dividend $D$ in period 2:</p>
+          <p>$\max u(c_1) + \beta u(c_2)$ subject to $c_1 + p_1 a_1 = y_1 + p_1 a_0$, $c_2 = y_2 + D a_1$.</p>
+          <p>FOC:</p>
+          <div class="defn">
+            <strong>Asset Pricing Equation:</strong> $\quad p_1 u'(c_1) = \beta D \, u'(c_2)$
+          </div>
+          <p>Equivalently: $p_1 = \beta D \frac{u'(y_2 + D)}{u'(y_1)}$ in equilibrium (with $a_0 = a_1 = 1$).</p>
+          <div class="intuition">
+            <strong>Intuition:</strong> Asset prices depend on <em>consumption allocations</em>, not just dividends. If households are starving ($c_1$ low), they value current consumption highly, reducing asset demand and prices. This is the key link that creates financial amplification.
+          </div>
+        </article>
+
+        <article class="module-card">
+          <h3>Stochastic Discount Factor</h3>
+          <p>In infinite horizon with risk:</p>
+          <p>$p_t = \mathbb{E}_t\!\left[\beta\frac{u'(c_{t+1})}{u'(c_t)}(D_{t+1} + p_{t+1})\right]$</p>
+          <p>The <strong>stochastic discount factor</strong> $m_{t+1} \equiv \beta\frac{u'(c_{t+1})}{u'(c_t)}$ prices all assets. In bad times, $c_{t+1}$ is low, $u'(c_{t+1})$ is high, and $m_{t+1}$ is high — assets that pay off in bad times are more valuable.</p>
+        </article>
+      </section>
+
+      <!-- ========== FINANCIAL AMPLIFICATION ========== -->
+      <section id="amplification" class="card anchor">
+        <h2>Financial Amplification Mechanism</h2>
+        <p>The key mechanism (Bernanke-Gertler 1989, Kiyotaki-Moore 1990):</p>
+
+        <div class="flow" style="margin:1rem 0;">
+          <span class="step">Shock</span><span class="arrow">&rarr;</span>
+          <span class="step">Asset price $\downarrow$</span><span class="arrow">&rarr;</span>
+          <span class="step">Collateral value $\downarrow$</span><span class="arrow">&rarr;</span>
+          <span class="step">Borrowing $\downarrow$</span><span class="arrow">&rarr;</span>
+          <span class="step">Consumption $\downarrow$</span><span class="arrow">&rarr;</span>
+          <span class="step">Asset demand $\downarrow$</span><span class="arrow">&rarr;</span>
+          <span class="step">Asset price $\downarrow$ further</span>
+        </div>
+
+        <p>This creates a <strong>"diabolic loop"</strong> where small initial shocks are amplified through the financial system.</p>
+
+        <article class="module-card">
+          <h3>Collateral Constraint Formulations</h3>
+          <div class="compare">
+            <div>
+              <h4>Houses as ATM</h4>
+              <p>$d_1 \leq \kappa p_1 a_0$</p>
+              <p style="font-size:0.88rem;">Borrowing is constrained by the value of <em>existing</em> assets (collateral).</p>
+            </div>
+            <div>
+              <h4>Mortgage</h4>
+              <p>$d_1 \leq \kappa p_1 a_1$</p>
+              <p style="font-size:0.88rem;">Borrowing is constrained by the value of assets <em>being purchased</em> (like a mortgage requiring a down payment).</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ========== HOUSES AS ATM ========== -->
+      <section id="houses-atm" class="card anchor">
+        <h2>Houses as ATM: Formal Analysis</h2>
+
+        <article class="module-card">
+          <h3>Equilibrium</h3>
+          <p>With $u(c_1) = \ln c_1$ and $u(c_2) = c_2$ (log-linear preferences):</p>
+          <p>Asset pricing: $p_1 = \beta D c_1$</p>
+          <p>Budget: $c_1 = y_1 + \kappa p_1$</p>
+          <p>Solving:</p>
+          <div class="defn">
+            <strong>Equilibrium Asset Price:</strong> $\quad p_1 = \frac{\beta D y_1}{1 - \beta D \kappa}$
+          </div>
+          <div class="defn">
+            <strong>Equilibrium Consumption:</strong> $\quad c_1 = \frac{y_1}{1 - \beta D \kappa}$
+          </div>
+          <p style="color:var(--muted);font-size:0.88rem;">We need $\beta D \kappa < 1$ for a finite, positive equilibrium (otherwise the amplification "blows up").</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Amplification Multiplier</h3>
+          <p>The derivative of consumption with respect to income:</p>
+          <div class="key-eq">
+            $\displaystyle \frac{\partial c_1}{\partial y_1} = \frac{1}{1 - \beta D \kappa} > 1$
+          </div>
+          <p>Consumption is <em>more volatile than income</em>! Without financial frictions ($\kappa = 0$ or no collateral), consumption moves one-for-one with income. With amplification, the impact is magnified.</p>
+          <div class="intuition">
+            <strong>The Feedback Loop:</strong> A $1 decline in $y_1$ directly reduces $c_1$ by $1. This reduces the asset price by $\beta D$ (via the asset pricing equation). The lower asset price reduces borrowing capacity by $\kappa\beta D$, further reducing $c_1$. This cycle continues: $1 + \kappa\beta D + (\kappa\beta D)^2 + \cdots = \frac{1}{1 - \kappa\beta D}$.
+          </div>
+        </article>
+      </section>
+
+      <!-- ========== MORTGAGE ========== -->
+      <section id="mortgage" class="card anchor">
+        <h2>Mortgage Formulation</h2>
+        <p>Under the mortgage formulation $d_1 \leq \kappa p_1 a_1$:</p>
+        <p>The household's budget constraint becomes $c_1 + (1-\kappa)p_1 a_1 = y_1 + p_1 a_0$, where $(1-\kappa)p_1 a_1$ is the down payment. The analysis is similar but yields slightly different amplification dynamics.</p>
+      </section>
+
+      <!-- ========== GREAT RECESSION ========== -->
+      <section id="great-recession" class="card anchor">
+        <h2>The Great Recession</h2>
+        <p>Mian and Sufi (2011, 2014) argue that a financial amplification mechanism played a central role in the 2007-2009 crisis.</p>
+
+        <article class="module-card">
+          <h3>Pre-Crisis Dynamics</h3>
+          <ul>
+            <li>Optimistic expectations about housing cash flows drove up house prices.</li>
+            <li>Households borrowed against rising home equity (the "houses as ATM" channel).</li>
+            <li>Leverage built up substantially, especially among subprime borrowers.</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Crisis and Amplification</h3>
+          <ul>
+            <li>Expectations turned pessimistic (decline in expected $D$).</li>
+            <li>House prices fell, destroying collateral value.</li>
+            <li>Households were forced to deleverage — cut spending sharply.</li>
+            <li>This translated into severe unemployment.</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Cross-Sectional Evidence</h3>
+          <p>Counties with the largest declines in housing net worth experienced the most severe employment losses from 2007-2009, consistent with the amplification mechanism.</p>
+        </article>
+      </section>
+
+      <!-- ========== SHADOW BANKING ========== -->
+      <section id="shadow-banking" class="card anchor">
+        <h2>Shadow Banking &amp; the Crisis</h2>
+
+        <article class="module-card">
+          <h3>The Shadow Banking System</h3>
+          <ul>
+            <li><strong>Securitization:</strong> Mortgages were pooled into RMBS/ABS, slicing and tranching risk.</li>
+            <li><strong>Repo market:</strong> Short-term collateralized lending, used by shadow banks to fund long-term assets.</li>
+            <li><strong>No regulation:</strong> No deposit insurance, no lender of last resort — fundamentally fragile.</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Key Failures</h3>
+          <ul>
+            <li><strong>Moral hazard:</strong> Mortgage originators no longer held the mortgages — no incentive to maintain underwriting standards.</li>
+            <li><strong>Adverse selection:</strong> RMBS/ABS were extremely complex. When defaults rose, buyers could not distinguish good from bad assets — the whole market seized up.</li>
+            <li><strong>Bank run:</strong> A classic run on the shadow banking system when repo lenders refused to roll over funding.</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Policy Responses</h3>
+          <ul>
+            <li><strong>Lender of last resort:</strong> Central banks extended liquidity to non-bank financial institutions.</li>
+            <li><strong>Quantitative easing (QE):</strong> Large-scale asset purchases to lower long-term rates.</li>
+            <li><strong>Unconventional monetary policy:</strong> Forward guidance, credit easing.</li>
+          </ul>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="scrollspy.js"></script>
+</body>
+</html>

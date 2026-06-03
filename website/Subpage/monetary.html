@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monetary | New Keynesian Economics</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]], displayMath: [["\\[", "\\]"], ["$$", "$$"]] },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div><p class="brand-cn">Macro Study Notes</p><p class="brand-en">Xinyu Zhou</p></div>
+    </div>
+    <nav class="topnav">
+      <a href="../index.html">Overview</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="micro_foundation.html">Micro Foundations</a>
+      <a href="growth.html">Growth</a>
+      <a href="short_run.html">Short Run</a>
+      <a class="active" href="monetary.html">Monetary</a>
+      <a href="open.html">Open</a>
+      <a href="labor.html">Labor</a>
+      <a href="financial.html">Financial</a>
+      <a href="methods.html">Methods</a>
+    </nav>
+  </header>
+
+  <main class="layout with-sidebar">
+    <aside class="sidebar card">
+      <h2>Content</h2>
+      <p style="margin:0;color:var(--muted);font-size:0.92rem;">Click to navigate</p>
+      <ul class="toc">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#classical-dichotomy">Classical Dichotomy</a></li>
+        <li><a href="#flex-price">Flexible Price Benchmark</a></li>
+        <li><a href="#monopolistic">Monopolistic Competition</a></li>
+        <li><a href="#sticky-prices">Sticky Prices (Calvo)</a></li>
+        <li><a href="#nkpc">NK Phillips Curve</a></li>
+        <li><a href="#output-gap">Output Gap &amp; Natural Output</a></li>
+        <li><a href="#policy">Monetary Policy</a></li>
+        <li><a href="#zlb">Zero Lower Bound</a></li>
+        <li><a href="#rules-discretion">Rules vs. Discretion</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <section id="overview" class="hero card anchor">
+        <p class="tag">Module 5</p>
+        <h1>Monetary Economics</h1>
+        <p>Why does money matter? The New Keynesian model introduces nominal rigidities to explain how monetary policy affects real activity in the short run, while preserving long-run neutrality. This is the modern workhorse for monetary policy analysis.</p>
+      </section>
+
+      <!-- ========== CLASSICAL DICHOTOMY ========== -->
+      <section id="classical-dichotomy" class="card anchor">
+        <h2>Classical Dichotomy</h2>
+        <p>The classical dichotomy states that real variables (output, employment, real wages, real interest rates) are determined by preferences and technology <em>independently</em> of nominal variables (money supply, price level).</p>
+
+        <article class="module-card">
+          <h3>Why It Fails</h3>
+          <ul>
+            <li>Major economic events often relate to monetary/financial sectors: Great Depression, Japan in the 1990s, Volcker recession.</li>
+            <li>Presence of <strong>nominal rigidities</strong> — prices or wages fail to adjust immediately to monetary policy changes.</li>
+            <li>Sources of rigidity: menu costs, contracts set in nominal terms, coordination failures.</li>
+          </ul>
+        </article>
+
+        <div class="defn">
+          <strong>Key Implication:</strong> Money is neutral in the long run, but not in the short run due to nominal rigidities.
+        </div>
+      </section>
+
+      <!-- ========== FLEXIBLE PRICE BENCHMARK ========== -->
+      <section id="flex-price" class="card anchor">
+        <h2>Flexible Price Benchmark</h2>
+
+        <article class="module-card">
+          <h3>Perfect Competition</h3>
+          <p>Representative household maximizes:</p>
+          <p>$\displaystyle \mathbb{E}_0 \sum_{t=0}^{\infty} \beta^t u(c_t, l_t)$</p>
+          <p>Subject to: $P_t c_t + Q_t B_{t+1} = B_t + W_t l_t - T_t$.</p>
+
+          <p><strong>Labor supply</strong> (intratemporal): $-\frac{u_{l,t}}{u_{c,t}} = \frac{W_t}{P_t} \equiv w_t$</p>
+          <p><strong>Euler equation</strong> (intertemporal): $u_{c,t} = \beta \mathbb{E}_t\!\left[u_{c,t+1} \frac{P_t}{P_{t+1}}\frac{1}{Q_t}\right]$</p>
+
+          <p>With separable CRRA utility $u(c,l) = \frac{c^{1-\sigma}}{1-\sigma} - \frac{l^{1+\varphi}}{1+\varphi}$ and linear production $y = zl$:</p>
+          <div class="key-eq">
+            $\log c_t = \frac{1+\varphi}{\sigma+\varphi}\log z_t, \quad \log l_t = \frac{1-\sigma}{\sigma+\varphi}\log z_t$
+          </div>
+          <p>A strong form of the classical dichotomy holds: all real variables are independent of nominal variables.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Consumption Euler in Log-Linear Form</h3>
+          <p>Let $i_t \equiv -\ln Q_t$, $\pi_{t+1} \equiv \ln(P_{t+1}/P_t)$, $\rho \equiv -\ln\beta$:</p>
+          <div class="defn">
+            <strong>IS Equation:</strong> $\quad \mathbb{E}_t\{\Delta \ln c_{t+1}\} = \frac{1}{\sigma}(i_t - \mathbb{E}_t\pi_{t+1} - \rho)$
+          </div>
+          <p>Consumption growth depends on the real interest rate $r_t = i_t - \mathbb{E}_t\pi_{t+1}$. Higher real rates depress current consumption relative to future consumption.</p>
+        </article>
+      </section>
+
+      <!-- ========== MONOPOLISTIC COMPETITION ========== -->
+      <section id="monopolistic" class="card anchor">
+        <h2>Monopolistic Competition</h2>
+        <p>For nominal rigidities to matter, firms must have price-setting power. This is introduced via differentiated products and monopolistic competition (Dixit-Stiglitz).</p>
+
+        <article class="module-card">
+          <h3>CES Preferences over Differentiated Goods</h3>
+          <p>$c_t = \left(\int_0^1 c_t(j)^{\frac{\varepsilon-1}{\varepsilon}} dj\right)^{\frac{\varepsilon}{\varepsilon-1}}, \quad \varepsilon > 1$</p>
+          <p>Demand for variety $j$:</p>
+          <div class="key-eq">
+            $\displaystyle c_t(j) = \left(\frac{P_t(j)}{P_t}\right)^{-\varepsilon} c_t$
+          </div>
+          <p>where the ideal price index is $P_t = \left(\int_0^1 P_t(j)^{1-\varepsilon} dj\right)^{\frac{1}{1-\varepsilon}}$.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Firm's Optimal Price (Flexible)</h3>
+          <p>A firm with constant marginal cost $W/z$ maximizes profit subject to the demand curve:</p>
+          <div class="defn">
+            <strong>Flexible price markup:</strong> $\quad P_t(j) = \frac{\varepsilon}{\varepsilon - 1} \cdot \frac{W_t}{z_t}$
+          </div>
+          <p>The real wage is $w_t = \frac{\varepsilon-1}{\varepsilon} z_t < z_t$ — firms pay workers less than their marginal product. Output and employment are below the perfectly competitive level.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Natural Level of Output</h3>
+          <p>The flexible-price (natural) level of output is:</p>
+          <p>$\log y_t^n = \psi_{yz} \log z_t = \frac{1+\varphi}{\sigma+\varphi} \log z_t - \frac{1}{\sigma+\varphi}\ln\frac{\varepsilon}{\varepsilon-1}$</p>
+          <p>In the NK model, actual output fluctuates around this natural level — the gap is the <strong>output gap</strong> $x_t \equiv \log y_t - \log y_t^n$.</p>
+        </article>
+      </section>
+
+      <!-- ========== STICKY PRICES ========== -->
+      <section id="sticky-prices" class="card anchor">
+        <h2>Sticky Prices: Calvo Model</h2>
+        <p>The Calvo (1983) model of price stickiness: each period, a random fraction $\theta$ of firms cannot change their price, while $1-\theta$ can re-optimize.</p>
+
+        <article class="module-card">
+          <h3>Price Level Dynamics</h3>
+          <p>Fraction $\theta$ of firms keep old prices, $1-\theta$ set the optimal reset price $P_t^*$:</p>
+          <p>$P_t = \left[\theta P_{t-1}^{1-\varepsilon} + (1-\theta)(P_t^*)^{1-\varepsilon}\right]^{\frac{1}{1-\varepsilon}}$</p>
+          <p>Log-linearized around zero-inflation steady state:</p>
+          <div class="key-eq">
+            $\hat{p}_t = \theta\hat{p}_{t-1} + (1-\theta)\hat{p}_t^* \quad\Rightarrow\quad \pi_t = (1-\theta)(\hat{p}_t^* - \hat{p}_{t-1})$
+          </div>
+        </article>
+
+        <article class="module-card">
+          <h3>Optimal Reset Price</h3>
+          <p>A firm that can re-optimize at $t$ maximizes expected discounted profits over the period its price remains fixed:</p>
+          <p>$\displaystyle \max_{P_t^*} \mathbb{E}_t \sum_{k=0}^{\infty} (\theta\beta)^k \frac{u_{c,t+k}}{u_{c,t}} \frac{P_t}{P_{t+k}} \left[P_t^* - \frac{W_{t+k}}{z_{t+k}}\right] y_{t+k|t}$</p>
+          <p>Log-linear FOC:</p>
+          <p>$\hat{p}_t^* = (1-\theta\beta)\sum_{k=0}^{\infty} (\theta\beta)^k \mathbb{E}_t[\hat{w}_{t+k} - \hat{z}_{t+k} + \hat{p}_{t+k}]$</p>
+          <p style="color:var(--muted);font-size:0.88rem;">The reset price is a discounted sum of expected future nominal marginal costs.</p>
+        </article>
+      </section>
+
+      <!-- ========== NKPC ========== -->
+      <section id="nkpc" class="card anchor">
+        <h2>New Keynesian Phillips Curve</h2>
+
+        <article class="module-card">
+          <h3>Derivation</h3>
+          <p>Combining the price level dynamics, the optimal reset price, and the relationship between real marginal cost and the output gap yields:</p>
+          <div class="theorem">
+            <strong>New Keynesian Phillips Curve (NKPC):</strong>
+            $$\pi_t = \kappa x_t + \beta \mathbb{E}_t\{\pi_{t+1}\}, \quad \kappa \equiv \frac{(1-\theta)(1-\theta\beta)}{\theta}(\sigma + \varphi)$$
+          </div>
+          <p>where $\kappa$ is the slope of the Phillips curve with respect to the output gap $x_t$.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Interpretation of $\kappa$</h3>
+          <ul>
+            <li>$\kappa = 0$ if prices are completely rigid ($\theta = 1$).</li>
+            <li>$\kappa \to \infty$ if prices are completely flexible ($\theta = 0$).</li>
+            <li>$\kappa$ increases with $\sigma + \varphi$ — higher IES or Frisch elasticity makes inflation more sensitive to the output gap.</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Forward-Looking Nature</h3>
+          <p>Iterating the NKPC forward:</p>
+          <div class="key-eq">
+            $\displaystyle \pi_t = \kappa \sum_{k=0}^{\infty} \beta^k \mathbb{E}_t\{x_{t+k}\}$
+          </div>
+          <p>Current inflation is the discounted sum of <em>expected future</em> output gaps — it is inherently forward-looking. Expected future booms ($x_{t+k} > 0$) raise current inflation; expected future busts lower it.</p>
+          <div class="intuition">
+            <strong>Intuition:</strong> When firms expect high future marginal costs (booms), they raise prices today because they may be stuck with today's price for multiple periods. This forward-looking behavior is a key departure from the old (backward-looking) Phillips curve.
+          </div>
+        </article>
+      </section>
+
+      <!-- ========== OUTPUT GAP ========== -->
+      <section id="output-gap" class="card anchor">
+        <h2>Output Gap &amp; Natural Output</h2>
+
+        <article class="module-card">
+          <h3>Real Marginal Cost and Output Gap</h3>
+          <p>Using household labor supply and firm production:</p>
+          <p>$\hat{w}_t - \hat{z}_t = (\sigma + \varphi)\hat{y}_t - (1+\varphi)\hat{z}_t$</p>
+          <p>At the natural (flexible-price) level: $\hat{y}_t^n = \frac{1+\varphi}{\sigma+\varphi}\hat{z}_t$.</p>
+          <div class="defn">
+            <strong>Real marginal cost $\propto$ output gap:</strong> $\quad \hat{w}_t - \hat{z}_t = (\sigma + \varphi)(\hat{y}_t - \hat{y}_t^n) \equiv (\sigma + \varphi)x_t$
+          </div>
+        </article>
+      </section>
+
+      <!-- ========== MONETARY POLICY ========== -->
+      <section id="policy" class="card anchor">
+        <h2>Monetary Policy &amp; Taylor Rule</h2>
+
+        <article class="module-card">
+          <h3>Taylor Rule</h3>
+          <div class="key-eq">
+            $i_t = \pi_t + \rho + \theta_\pi(\pi_t - \pi^*) + \theta_Y(Y_t - \bar{Y}), \quad \theta_\pi, \theta_Y > 0$
+          </div>
+          <p>The central bank raises the nominal rate when inflation is above target or output is above potential. Combined with the Fisher equation, this determines the real interest rate.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Optimal Monetary Policy</h3>
+          <p>The optimal policy is to undo the distortions from price stickiness, making allocations equal the flexible-price outcome (<em>"divine coincidence"</em>). This means stabilizing both inflation <em>and</em> the output gap:</p>
+          <p>$\pi_t = 0, \quad x_t = 0 \quad \text{at all times}$</p>
+          <p style="color:var(--muted);font-size:0.88rem;">In the baseline NK model, this "divine coincidence" holds — stabilizing inflation stabilizes the output gap. With real imperfections (e.g., cost-push shocks), a trade-off may emerge.</p>
+        </article>
+      </section>
+
+      <!-- ========== ZLB ========== -->
+      <section id="zlb" class="card anchor">
+        <h2>Zero Lower Bound</h2>
+
+        <div class="defn">
+          <strong>Zero Lower Bound (ZLB):</strong> Nominal interest rates cannot go below zero: $i_t \geq 0$. Money pays zero interest, so no one would lend at negative nominal rates.
+        </div>
+
+        <article class="module-card">
+          <h3>When the ZLB Binds</h3>
+          <p>The interest rate that delivers full employment is:</p>
+          <p>$1 + i_t = \frac{1}{\beta}\left(\frac{A_2}{\mathbb{E}_t A_2}\right)^{1+1/\sigma} \cdot (1+\hat{i})$</p>
+          <p>The ZLB is more likely to bind when:</p>
+          <ul>
+            <li>Pre-recession interest rates are already low ($\hat{i}$ close to 0).</li>
+            <li>Productivity expectations drop sharply (large fall in $\mathbb{E}_t A_2$).</li>
+          </ul>
+          <p style="color:var(--muted);font-size:0.88rem;">When the ZLB binds, monetary policy becomes impotent — this is the <strong>liquidity trap</strong>. Fiscal policy may need to play the stabilizing role.</p>
+        </article>
+      </section>
+
+      <!-- ========== RULES VS DISCRETION ========== -->
+      <section id="rules-discretion" class="card anchor">
+        <h2>Rules vs. Discretion</h2>
+        <p>A fundamental issue in monetary policy design: should policy follow a rule or be at the policymaker's discretion?</p>
+
+        <article class="module-card">
+          <h3>Time Inconsistency Problem</h3>
+          <p>Central bank minimizes loss: $L(u, \pi) = u^2 + \gamma\pi^2$, subject to the Phillips curve $u - \bar{u} = -\alpha(\pi - \mathbb{E}\pi)$.</p>
+
+          <div class="compare">
+            <div>
+              <h4>Rule</h4>
+              <p>Central bank commits to $\pi = 0$. Under a credible commitment rule, $\mathbb{E}\pi = 0$, and unemployment is $u = \bar{u}$. This yields the best sustainable outcome.</p>
+            </div>
+            <div>
+              <h4>Discretion</h4>
+              <p>Private sector sets $\mathbb{E}\pi$ first. Central bank then chooses $\pi$. Even if the CB announces $\pi = 0$, once expectations are set, the CB is <em>tempted</em> to exploit the Phillips curve to get lower $u$ with some inflation.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="module-card">
+          <h3>Equilibrium under Discretion</h3>
+          <p>Central bank's best response: $\pi = \frac{\alpha}{\gamma + \alpha^2}\bar{u} + \frac{\alpha^2}{\gamma+\alpha^2}\mathbb{E}\pi$.</p>
+          <p>In equilibrium $\pi = \mathbb{E}\pi$:</p>
+          <div class="key-eq">
+            $\displaystyle \pi^* = \frac{\alpha}{\gamma}\bar{u} > 0$
+          </div>
+          <p><strong>Result:</strong> Inflation is positive under discretion, but unemployment is the same ($u = \bar{u}$). The inflation bias arises because the CB cannot credibly commit to low inflation.</p>
+          <div class="intuition">
+            <strong>Implication:</strong> There may be advantages to "tying one's hands" — taking options off the table. This is why independent central banks with clear inflation targets and commitment devices can achieve better outcomes than purely discretionary policymaking.
+          </div>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="scrollspy.js"></script>
+</body>
+</html>

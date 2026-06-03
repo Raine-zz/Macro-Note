@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concepts | Macroeconomic Measurement</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]], displayMath: [["\\[", "\\]"], ["$$", "$$"]] },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div><p class="brand-cn">Macro Study Notes</p><p class="brand-en">Xinyu Zhou</p></div>
+    </div>
+    <nav class="topnav">
+      <a href="../index.html">Overview</a>
+      <a class="active" href="concepts.html">Concepts</a>
+      <a href="micro_foundation.html">Micro Foundations</a>
+      <a href="growth.html">Growth</a>
+      <a href="short_run.html">Short Run</a>
+      <a href="monetary.html">Monetary</a>
+      <a href="open.html">Open</a>
+      <a href="labor.html">Labor</a>
+      <a href="financial.html">Financial</a>
+      <a href="methods.html">Methods</a>
+    </nav>
+  </header>
+
+  <main class="layout with-sidebar">
+    <aside class="sidebar card">
+      <h2>Content</h2>
+      <p style="margin:0;color:var(--muted);font-size:0.92rem;">Click to navigate</p>
+      <ul class="toc">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#gdp">Aggregate Output: GDP</a></li>
+        <li><a href="#nominal-real">Nominal vs Real</a></li>
+        <li><a href="#inflation">Inflation</a></li>
+        <li><a href="#unemployment">Unemployment</a></li>
+        <li><a href="#identities">National Income Identities</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <section id="overview" class="hero card anchor">
+        <p class="tag">Module 1</p>
+        <h1>Macroeconomic Measurement &amp; Core Concepts</h1>
+        <p>Three key macroeconomic concepts form the foundation: aggregate output, inflation, and unemployment. Understanding how they are measured is essential before building models.</p>
+      </section>
+
+      <section id="gdp" class="card anchor">
+        <h2>Aggregate Output: GDP</h2>
+        <p>Gross Domestic Product (GDP) is the primary measure of aggregate economic activity. National income accounts provide an accounting system used to measure it. <strong>GDP = GDI</strong> by construction — these are flow variables, measured per period.</p>
+
+        <article class="module-card">
+          <h3>Three Ways to Measure GDP</h3>
+          <ol class="derivation">
+            <li><strong>Total value of final goods and services produced</strong> — excludes intermediate goods to avoid double-counting.</li>
+            <li><strong>Total value-added</strong> — sum of (sales revenue &minus; cost of intermediate inputs) across all firms.</li>
+            <li><strong>Total income</strong> — sum of all incomes earned (wages + profits).</li>
+          </ol>
+          <p style="margin:0;color:var(--muted);font-size:0.9rem;">Definitions 1&ndash;2 are the production side (GDP). Definition 3 is the income side (GDI).</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Example: Steel and Car Production</h3>
+          <table>
+            <tr><th></th><th>Steel Company (Firm #1)</th><th>Car Company (Firm #2)</th></tr>
+            <tr><td>Sales Revenue</td><td>RMB 1,000</td><td>RMB 2,100</td></tr>
+            <tr><td>Wages</td><td>RMB 800</td><td>RMB 700</td></tr>
+            <tr><td>Steel (intermediate)</td><td>&mdash;</td><td>RMB 1,000</td></tr>
+            <tr><td>Profit</td><td>RMB 200</td><td>RMB 400</td></tr>
+          </table>
+          <ul>
+            <li><strong>Final goods:</strong> Only cars = RMB 2,100</li>
+            <li><strong>Value-added:</strong> RMB 1,000 (steel) + RMB 1,100 (cars) = RMB 2,100</li>
+            <li><strong>Total income:</strong> Wages 1,500 + Profits 600 = RMB 2,100</li>
+          </ul>
+          <p style="margin:0;color:var(--muted);font-size:0.9rem;">All three methods produce the same result. The accounting identity GDP = GDI holds by construction.</p>
+        </article>
+      </section>
+
+      <section id="nominal-real" class="card anchor">
+        <h2>Nominal vs Real GDP</h2>
+
+        <article class="module-card">
+          <h3>Definitions</h3>
+          <ul>
+            <li><strong>Nominal GDP</strong> ($Y_t$): Sum of quantities times <em>current</em> prices.</li>
+            <li><strong>Real GDP</strong> ($Y_t$): Sum of quantities times <em>constant</em> (base-year) prices. Controls for changes in purchasing power.</li>
+          </ul>
+          <p>In the base year, nominal and real GDP are equal by construction.</p>
+        </article>
+
+        <div class="defn">
+          <strong>GDP Deflator:</strong> $P_t \equiv \frac{\$Y_t}{Y_t} \times 100$ &mdash; an implicit price index measuring the average price of aggregate output. Equals 100 in the base year.
+        </div>
+      </section>
+
+      <section id="inflation" class="card anchor">
+        <h2>Inflation</h2>
+        <p>Inflation is a sustained increase in the general level of prices. Deflation is a sustained decrease.</p>
+
+        <article class="module-card">
+          <h3>Two Key Price Measures</h3>
+          <div class="compare">
+            <div>
+              <h4>GDP Deflator</h4>
+              <p>$P_t = \frac{\text{Nominal GDP}_t}{\text{Real GDP}_t} \times 100$</p>
+              <p style="color:var(--muted);font-size:0.88rem;">Measures the average price of <em>all</em> domestically produced final goods and services.</p>
+            </div>
+            <div>
+              <h4>Consumer Price Index (CPI)</h4>
+              <p>Measures the average price of a <em>consumption basket</em> purchased by typical households.</p>
+              <p style="color:var(--muted);font-size:0.88rem;">Includes imported goods; uses fixed weights.</p>
+            </div>
+          </div>
+        </article>
+
+        <div class="key-eq">
+          <strong>Inflation Rate:</strong> $\quad \pi_t \equiv \frac{P_t - P_{t-1}}{P_{t-1}}$
+        </div>
+        <p style="color:var(--muted);font-size:0.9rem;margin-top:0;">CPI and GDP deflator typically move together over time.</p>
+      </section>
+
+      <section id="unemployment" class="card anchor">
+        <h2>Unemployment</h2>
+        <p>The labor force is partitioned into employed ($N$), unemployed ($U$), and not in the labor force ($NL$). Only those actively looking for work count as unemployed.</p>
+
+        <div class="key-eq">
+          <strong>Unemployment Rate:</strong> $\quad u \equiv \frac{U}{L} = \frac{U}{N+U}$<br>
+          <strong>Participation Rate:</strong> $\quad \frac{L}{\text{Working-age population}}$
+        </div>
+
+        <article class="module-card">
+          <h3>Important Nuances</h3>
+          <ul>
+            <li>Those not working <em>and</em> not looking are <strong>not in the labor force</strong>.</li>
+            <li>Unemployment rate changes due to: size of pool of unemployed ($U$) or size of labor force ($L$).</li>
+            <li>Discouraged workers may leave the labor force, causing the unemployment rate to understate slack.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="identities" class="card anchor">
+        <h2>National Income Identities</h2>
+
+        <article class="module-card">
+          <h3>GDP Components (Closed Economy)</h3>
+          <p>Total demand for goods:</p>
+          <p style="text-align:center;"><strong>$Z \equiv C + I + G$</strong></p>
+          <p>In equilibrium, output equals demand: $Y = Z$.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Investment = Savings</h3>
+          <p>Private saving: $S \equiv Y_D - C = Y - T - C$</p>
+          <p>From goods market equilibrium $Y = C + I + G$:</p>
+          <div class="defn">
+            <strong>IS Identity:</strong> $\quad I = S + (T - G)$<br>
+            Investment = Private Savings + Public Savings
+          </div>
+          <ul>
+            <li>$T > G$: government runs surplus, public saving positive.</li>
+            <li>$T < G$: government runs deficit, public saving negative.</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Open Economy Extension</h3>
+          <p>Net exports: $NX \equiv X - IM$</p>
+          <div class="key-eq">
+            $Y = C + I + G + NX$
+          </div>
+          <p>From this, $NX = (S - I) + (T - G)$ &mdash; a trade surplus corresponds to excess of total saving over investment.</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="scrollspy.js"></script>
+</body>
+</html>

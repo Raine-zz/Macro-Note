@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growth | Growth Theory</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]], displayMath: [["\\[", "\\]"], ["$$", "$$"]] },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div><p class="brand-cn">Macro Study Notes</p><p class="brand-en">Xinyu Zhou</p></div>
+    </div>
+    <nav class="topnav">
+      <a href="../index.html">Overview</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="micro_foundation.html">Micro Foundations</a>
+      <a class="active" href="growth.html">Growth</a>
+      <a href="short_run.html">Short Run</a>
+      <a href="monetary.html">Monetary</a>
+      <a href="open.html">Open</a>
+      <a href="labor.html">Labor</a>
+      <a href="financial.html">Financial</a>
+      <a href="methods.html">Methods</a>
+    </nav>
+  </header>
+
+  <main class="layout with-sidebar">
+    <aside class="sidebar card">
+      <h2>Content</h2>
+      <p style="margin:0;color:var(--muted);font-size:0.92rem;">Click to navigate</p>
+      <ul class="toc">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#solow-setup">Solow: Setup</a></li>
+        <li><a href="#solow-dynamics">Solow: Dynamics</a></li>
+        <li><a href="#solow-steady">Solow: Steady State</a></li>
+        <li><a href="#golden-rule">Golden Rule</a></li>
+        <li><a href="#convergence">Speed of Convergence</a></li>
+        <li><a href="#tech-progress">Technological Progress</a></li>
+        <li><a href="#rck">RCK / Ramsey</a></li>
+        <li><a href="#olg">OLG Model</a></li>
+        <li><a href="#growth-acct">Growth Accounting</a></li>
+        <li><a href="#institutions">Productivity &amp; Institutions</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <section id="overview" class="hero card anchor">
+        <p class="tag">Module 3</p>
+        <h1>Economic Growth Theory</h1>
+        <p>Growth theory asks: what determines the long-run level and growth rate of output per capita? We build from the Solow model through optimal saving (RCK) and overlapping generations (OLG).</p>
+      </section>
+
+      <!-- ========== SOLOW SETUP ========== -->
+      <section id="solow-setup" class="card anchor">
+        <h2>Solow Model: Setup</h2>
+        <p>The Solow (1956) neoclassical growth model is based on two long-run relationships: (i) amount of capital determines output; (ii) amount of output determines saving and thus investment.</p>
+
+        <article class="module-card">
+          <h3>Production Function</h3>
+          <p>$Y_t = F(K_t, A_t L_t)$ &mdash; labor-augmenting (Harrod-neutral) technological progress.</p>
+          <p><strong>Assumptions:</strong></p>
+          <ul>
+            <li>$F_K > 0$, $F_{KK} < 0$ (positive but diminishing marginal product)</li>
+            <li>Constant Returns to Scale (CRS): $F(\lambda K, \lambda AL) = \lambda F(K, AL)$, $\forall \lambda > 0$</li>
+            <li>Inada Conditions: $F_K(0, AL) = \infty$, $F_K(\infty, AL) = 0$</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Capital Accumulation &amp; Saving</h3>
+          <p>Constant saving rate $s \in (0,1)$: $S_t = sY_t$. In a closed economy, $I_t = S_t$.</p>
+          <p>Capital accumulation with depreciation rate $\delta$:</p>
+          <div class="key-eq">
+            $K_{t+1} = (1 - \delta)K_t + I_t$
+          </div>
+          <p>Exogenous growth: $A_{t+1} = (1+g)A_t$, $L_{t+1} = (1+n)L_t$.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Intensive Form</h3>
+          <p>Detrend the model by writing in efficiency units:</p>
+          <p>$y_t \equiv \frac{Y_t}{A_t L_t} = f(k_t)$ where $k_t \equiv \frac{K_t}{A_t L_t}$</p>
+          <p>Using CRS: $y = F(\frac{K}{AL}, 1) \equiv f(k)$.</p>
+        </article>
+      </section>
+
+      <!-- ========== SOLOW DYNAMICS ========== -->
+      <section id="solow-dynamics" class="card anchor">
+        <h2>Solow Model: Capital Dynamics</h2>
+
+        <article class="module-card">
+          <h3>Discrete Time</h3>
+          <p>From $K_{t+1} = sF(K_t, A_t L_t) + (1-\delta)K_t$, divide by $A_{t+1}L_{t+1}$:</p>
+          <div class="key-eq">
+            $k_{t+1} = \frac{sf(k_t) + (1-\delta)k_t}{(1+g)(1+n)}$
+          </div>
+        </article>
+
+        <article class="module-card">
+          <h3>Continuous Time</h3>
+          <p>$\dot{K}(t) = sF(K, AL) - \delta K$</p>
+          <p>Using $k = \frac{K}{AL}$ and the growth rates $\dot{A}/A = g$, $\dot{L}/L = n$:</p>
+          <div class="key-eq">
+            $\dot{k}(t) = sf(k(t)) - (\delta + g + n)k(t)$
+          </div>
+          <p style="color:var(--muted);font-size:0.88rem;">The term $\delta + g + n$ is the <strong>effective depreciation rate</strong> — capital per effective worker depreciates through physical wear, technological obsolescence, and dilution by labor force growth.</p>
+        </article>
+
+        <div class="intuition">
+          <strong>Intuition:</strong> Change in capital per effective worker = investment per effective worker minus effective depreciation. When $sf(k) > (\delta+g+n)k$, capital deepens ($\dot{k} > 0$). When $sf(k) < (\delta+g+n)k$, capital shallows ($\dot{k} < 0$).
+        </div>
+      </section>
+
+      <!-- ========== STEADY STATE ========== -->
+      <section id="solow-steady" class="card anchor">
+        <h2>Steady State &amp; Comparative Dynamics</h2>
+
+        <article class="module-card">
+          <h3>Steady State</h3>
+          <p>Steady state is where $k_{t+1} = k_t$ (discrete) and $\dot{k} = 0$ (continuous):</p>
+          <div class="defn">
+            <strong>Steady-state condition:</strong> $\quad sf(k^*) = (\delta + g + n)k^*$
+          </div>
+          <p>At steady state, investment exactly covers effective depreciation. Capital per effective worker and output per effective worker are constant.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Comparative Dynamics: Saving Rate</h3>
+          <p>How does $k^*$ change with $s$? Implicitly differentiate $sf(k(s)) = (\delta+g+n)k(s)$:</p>
+          <div class="key-eq">
+            $k'(s) = -\frac{f(k^*)}{sf'(k^*) - (\delta+g+n)} > 0$
+          </div>
+          <p style="color:var(--muted);font-size:0.88rem;">The denominator is negative at steady state (the $sf(k)$ curve crosses $(\delta+g+n)k$ from above), so an increase in $s$ raises $k^*$.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Saving Rate and Growth</h3>
+          <ul>
+            <li>Saving rate has <strong>no effect on long-run growth rate</strong> of output per worker — that is $g$.</li>
+            <li>Saving rate <strong>determines the long-run level</strong> of output per worker.</li>
+            <li>An increase in $s$ leads to higher growth <strong>in the short run</strong>, not forever. The boost fades as the economy converges to a new, higher steady state.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- ========== GOLDEN RULE ========== -->
+      <section id="golden-rule" class="card anchor">
+        <h2>Golden Rule of Capital Accumulation</h2>
+        <p>What saving rate $s$ maximizes steady-state consumption per effective worker?</p>
+
+        <article class="module-card">
+          <h3>Consumption Maximization</h3>
+          <p>$c^* = f(k^*) - (\delta+g+n)k^*$</p>
+          <p>First-order condition:</p>
+          <div class="defn">
+            <strong>Golden Rule:</strong> $\quad f'(k^*_{GR}) = \delta + g + n$
+          </div>
+          <p>Marginal product of capital equals the effective depreciation rate.</p>
+          <div class="intuition">
+            <strong>Intuition:</strong> If $f'(k^*) > \delta + g + n$, the extra output from an additional unit of capital exceeds what is needed to maintain it — raising saving increases consumption. If $f'(k^*) < \delta + g + n$, the economy is "over-saving" — the return on capital is less than maintenance cost.
+          </div>
+        </article>
+
+        <article class="module-card">
+          <h3>Optimal Saving Rate</h3>
+          <p>At the golden rule, $sf(k^*) = (\delta+g+n)k^*$ and $f'(k^*) = \delta+g+n$, implying:</p>
+          <div class="key-eq">
+            $s_{GR} = \frac{f'(k^*)k^*}{f(k^*)} = \alpha$ (for Cobb-Douglas $f(k) = k^\alpha$)
+          </div>
+          <p style="color:var(--muted);font-size:0.88rem;">For Cobb-Douglas, the optimal saving rate equals the capital share $\alpha$.</p>
+        </article>
+      </section>
+
+      <!-- ========== SPEED OF CONVERGENCE ========== -->
+      <section id="convergence" class="card anchor">
+        <h2>Speed of Convergence</h2>
+        <p>How fast does the economy converge to the steady state? Linearize $\dot{k} = \psi(k)$ around $k^*$:</p>
+
+        <article class="module-card">
+          <h3>Convergence Rate</h3>
+          <p>$\psi'(k^*) = sf'(k^*) - (\delta+g+n) = \frac{sf'(k^*)k^*}{f(k^*)}(\delta+g+n) - (\delta+g+n)$</p>
+          <div class="key-eq">
+            $\beta \equiv -\psi'(k^*) = (1 - \epsilon)(\delta + g + n) > 0$
+          </div>
+          <p>where $\epsilon \equiv \frac{f'(k^*)k^*}{f(k^*)}$ is the elasticity of output with respect to capital (the capital share in Cobb-Douglas).</p>
+          <div class="intuition">
+            <strong>Intuition:</strong> If $\epsilon$ is close to 1 (near-constant returns to capital), convergence is very slow. If $\epsilon = 1$ (AK model), the economy never converges. For typical $\epsilon \approx 0.3$, $\delta+g+n \approx 0.06$, the convergence rate is about 4% per year — it takes roughly 17 years to close half the gap to steady state.
+          </div>
+        </article>
+      </section>
+
+      <!-- ========== TECHNOLOGICAL PROGRESS ========== -->
+      <section id="tech-progress" class="card anchor">
+        <h2>Solow with Technological Progress</h2>
+
+        <article class="module-card">
+          <h3>Balanced Growth</h3>
+          <p>With labor-augmenting technology, the model exhibits a <strong>balanced growth path</strong> (BGP) where:</p>
+          <ul>
+            <li>$Y/AN$ and $K/AN$ are constant in steady state.</li>
+            <li>Output $Y$ grows at rate $g + n$.</li>
+            <li>Output per worker $Y/N$ grows at rate $g$.</li>
+            <li>Capital per worker $K/N$ grows at rate $g$.</li>
+          </ul>
+          <p style="color:var(--muted);font-size:0.88rem;">The standard Solow model <em>without</em> technological progress predicts that capital accumulation alone cannot sustain long-run growth. Sustained growth requires $g > 0$.</p>
+        </article>
+      </section>
+
+      <!-- ========== RCK ========== -->
+      <section id="rck" class="card anchor">
+        <h2>Ramsey-Cass-Koopmans Model</h2>
+        <p>The RCK model endogenizes the saving rate by solving a social planner's problem or a representative household's intertemporal optimization.</p>
+
+        <article class="module-card">
+          <h3>Social Planner's Problem</h3>
+          <p>Maximize: $\displaystyle \sum_{t=0}^{\infty} \beta^t u(c_t)$, subject to:</p>
+          <p>$c_t + k_{t+1} = f(k_t) + (1-\delta)k_t$</p>
+          <p>Lagrangian with multiplier $\lambda_t$:</p>
+          <p>$\mathcal{L} = \sum_{t=0}^{\infty} \beta^t u(c_t) + \lambda_t [f(k_t) + (1-\delta)k_t - c_t - k_{t+1}]$</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Key Optimality Condition: Euler Equation</h3>
+          <p>FOCs yield the consumption Euler equation:</p>
+          <div class="defn">
+            <strong>Euler Equation:</strong> $\quad u'(c_t) = \beta u'(c_{t+1})[f'(k_{t+1}) + 1 - \delta]$
+          </div>
+          <p>With CRRA utility $u(c) = \frac{c^{1-\sigma} - 1}{1-\sigma}$:</p>
+          <div class="key-eq">
+            $\displaystyle \frac{c_{t+1}}{c_t} = [\beta(f'(k_{t+1}) + 1 - \delta)]^{1/\sigma}$
+          </div>
+          <p>Consumption grows when the return to capital exceeds the rate of time preference.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Phase Diagram &amp; Saddle Path</h3>
+          <p>The system has two differential equations:</p>
+          <ul>
+            <li>$\dot{k} = f(k) - c - \delta k$ (resource constraint)</li>
+            <li>$\dot{c} = \frac{c}{\sigma}[f'(k) - \delta - \rho]$ (Euler, where $\rho = -\ln\beta$)</li>
+          </ul>
+          <p>The steady state is saddle-path stable: for any initial $k_0$, there is a unique $c_0$ that puts the economy on the convergent trajectory. All other paths violate the transversality condition.</p>
+        </article>
+      </section>
+
+      <!-- ========== OLG ========== -->
+      <section id="olg" class="card anchor">
+        <h2>Overlapping Generations (Diamond) Model</h2>
+        <p>The OLG model features finitely-lived agents: each generation lives for two periods (young and old), creating a natural role for saving and dissaving over the life cycle.</p>
+
+        <article class="module-card">
+          <h3>Setup</h3>
+          <p>Each generation $t$:</p>
+          <ul>
+            <li><strong>Young:</strong> Supplies 1 unit of labor, earns wage $w_t$, consumes $c_{1t}$, saves $s_t$.</li>
+            <li><strong>Old:</strong> Consumes $c_{2,t+1} = (1 + r_{t+1})s_t$ from savings plus interest.</li>
+          </ul>
+          <p>Maximizes: $u(c_{1t}) + \beta u(c_{2,t+1})$ subject to the intertemporal budget constraint.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Dynamic Inefficiency</h3>
+          <p>A key insight of the OLG model: competitive equilibria may be <strong>dynamically inefficient</strong> — the economy could over-accumulate capital beyond the golden rule level. This cannot happen in the RCK model with infinitely-lived agents because the transversality condition rules it out.</p>
+        </article>
+      </section>
+
+      <!-- ========== GROWTH ACCOUNTING ========== -->
+      <section id="growth-acct" class="card anchor">
+        <h2>Growth Accounting</h2>
+        <p>Growth accounting decomposes output growth into contributions from factor accumulation and productivity.</p>
+
+        <article class="module-card">
+          <h3>Growth Rate Decomposition</h3>
+          <p>Start with $Y = A K^\alpha N^{1-\alpha}$. Taking logs and differencing:</p>
+          <div class="key-eq">
+            $g_Y = g_A + \alpha g_K + (1-\alpha)g_N$
+          </div>
+          <p>Growth in output per worker:</p>
+          <div class="defn">
+            $g_Y - g_N = g_A + \alpha(g_K - g_N)$
+          </div>
+          <p>Output per worker growth = TFP growth + capital deepening (weighted by $\alpha \approx 1/3$).</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Levels Decomposition</h3>
+          <p>Comparing two countries $i, j$ at a point in time:</p>
+          <p>$\displaystyle \ln\frac{Y_i}{N_i} - \ln\frac{Y_j}{N_j} = (\ln A_i - \ln A_j) + \alpha\!\left(\ln\frac{K_i}{N_i} - \ln\frac{K_j}{N_j}\right)$</p>
+          <p style="color:var(--muted);font-size:0.88rem;">Most of the income gap between rich and poor countries is explained by TFP differences, not capital differences.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>TFP as a Residual</h3>
+          <p>Measured TFP is the "Solow residual" — a measure of our ignorance:</p>
+          <p>$\widehat{\ln A} = \ln Y - \alpha\ln K - (1-\alpha)\ln N$</p>
+          <p style="color:var(--muted);font-size:0.88rem;">It captures everything not explained by measured inputs: technology, institutions, human capital, political stability, etc.</p>
+        </article>
+      </section>
+
+      <!-- ========== INSTITUTIONS ========== -->
+      <section id="institutions" class="card anchor">
+        <h2>Productivity &amp; Institutions</h2>
+
+        <article class="module-card">
+          <h3>Why Does TFP Differ?</h3>
+          <p>TFP is not just literal technology — it's anything that affects production efficiency:</p>
+          <ul>
+            <li>Political stability and rule of law</li>
+            <li>Property rights protection</li>
+            <li>Contract enforceability</li>
+            <li>Financial market development</li>
+            <li>Corruption levels</li>
+          </ul>
+          <p style="color:var(--muted);font-size:0.88rem;">Cross-country regressions show strong correlations between institutional quality and GDP per capita. Causality is harder to establish, but natural experiments (e.g., North vs South Korea) suggest institutions matter enormously.</p>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="scrollspy.js"></script>
+</body>
+</html>

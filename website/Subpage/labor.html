@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Labor | Labor Market & Unemployment</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]], displayMath: [["\\[", "\\]"], ["$$", "$$"]] },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div><p class="brand-cn">Macro Study Notes</p><p class="brand-en">Xinyu Zhou</p></div>
+    </div>
+    <nav class="topnav">
+      <a href="../index.html">Overview</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="micro_foundation.html">Micro Foundations</a>
+      <a href="growth.html">Growth</a>
+      <a href="short_run.html">Short Run</a>
+      <a href="monetary.html">Monetary</a>
+      <a href="open.html">Open</a>
+      <a class="active" href="labor.html">Labor</a>
+      <a href="financial.html">Financial</a>
+      <a href="methods.html">Methods</a>
+    </nav>
+  </header>
+
+  <main class="layout with-sidebar">
+    <aside class="sidebar card">
+      <h2>Content</h2>
+      <p style="margin:0;color:var(--muted);font-size:0.92rem;">Click to navigate</p>
+      <ul class="toc">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#measuring">Measuring the Labor Market</a></li>
+        <li><a href="#beveridge">Vacancies &amp; Beveridge Curve</a></li>
+        <li><a href="#flows">Labor Market Flows</a></li>
+        <li><a href="#competitive">Competitive Labor Market</a></li>
+        <li><a href="#matching">DMP: Matching Function</a></li>
+        <li><a href="#dmp-equilibrium">DMP: Equilibrium</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <section id="overview" class="hero card anchor">
+        <p class="tag">Module 7</p>
+        <h1>Labor Market &amp; Unemployment</h1>
+        <p>The competitive labor market model cannot explain involuntary unemployment. The Diamond-Mortensen-Pissarides (DMP) search and matching model provides a microfounded theory of frictional unemployment.</p>
+      </section>
+
+      <!-- ========== MEASURING ========== -->
+      <section id="measuring" class="card anchor">
+        <h2>Measuring the Labor Market</h2>
+
+        <article class="module-card">
+          <h3>Labor Market Stocks</h3>
+          <p>Individuals are classified into three groups:</p>
+          <ul>
+            <li><strong>Employed ($E$):</strong> Worked in the past week.</li>
+            <li><strong>Unemployed ($U$):</strong> Not employed, but actively searched in the last 4 weeks.</li>
+            <li><strong>Not in labor force ($NL$):</strong> Neither employed nor unemployed.</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Key Rates</h3>
+          <div class="key-eq">
+            $\displaystyle u = \frac{U}{E+U}, \quad p = \frac{E+U}{E+U+NL}, \quad n = \frac{E}{E+U+NL}$
+          </div>
+          <ul>
+            <li>$u$: unemployment rate (most volatile).</li>
+            <li>$p$: participation rate.</li>
+            <li>$n$: employment-population ratio.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- ========== BEVERIDGE ========== -->
+      <section id="beveridge" class="card anchor">
+        <h2>Vacancies &amp; the Beveridge Curve</h2>
+
+        <article class="module-card">
+          <h3>Vacancy Rate</h3>
+          <p>The vacancy rate is the ratio of job openings to the total labor force. When the vacancy-to-unemployment ratio is high, the labor market is considered <strong>tight</strong>.</p>
+          <div class="defn">
+            <strong>Beveridge Curve:</strong> A strong negative empirical relationship between the vacancy rate and the unemployment rate. High vacancy rates coincide with low unemployment.
+          </div>
+        </article>
+      </section>
+
+      <!-- ========== FLOWS ========== -->
+      <section id="flows" class="card anchor">
+        <h2>Labor Market Flows &amp; Steady States</h2>
+
+        <article class="module-card">
+          <h3>Job Finding and Job Loss Rates</h3>
+          <p>Workers flow between states each period:</p>
+          <ul>
+            <li><strong>Job finding rate:</strong> fraction of unemployed who become employed per month (~30% in the US).</li>
+            <li><strong>Job loss (separation) rate:</strong> fraction of employed who become unemployed per month (~1-2% in the US).</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Steady-State Unemployment</h3>
+          <p>In steady state, flows into unemployment equal flows out:</p>
+          <div class="key-eq">
+            $U \cdot f = E \cdot s \quad\Rightarrow\quad u = \frac{s}{s + f}$
+          </div>
+          <p>where $f$ is the job finding rate and $s$ is the separation rate. The unemployment rate is determined by the <strong>flow rates</strong>, even in steady state.</p>
+        </article>
+      </section>
+
+      <!-- ========== COMPETITIVE ========== -->
+      <section id="competitive" class="card anchor">
+        <h2>Competitive Labor Market (Benchmark)</h2>
+
+        <article class="module-card">
+          <h3>Equilibrium</h3>
+          <p>Household: $\max U(c) - V(h)$ subject to $c = wh + \Pi$.</p>
+          <p>Firm: $\max f(n) - wn$.</p>
+          <p>Equilibrium:</p>
+          <div class="key-eq">
+            $\displaystyle \frac{V'(h)}{U'(c)} = w = f'(n)$
+          </div>
+          <p>MRS between leisure and consumption equals the real wage, which equals the MPL. All workers work the same hours; there is no involuntary unemployment.</p>
+          <p style="color:var(--muted);font-size:0.88rem;">With $U(c) = \ln c - \gamma h$ and $f(n) = An$: $n^* = 1/\gamma$, independent of productivity $A$. Income and substitution effects cancel.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Shortcomings</h3>
+          <ul>
+            <li>Cannot explain involuntary unemployment — some workers want jobs at the prevailing wage but cannot find them.</li>
+            <li>All identical workers are either all employed or all unemployed — no dispersion.</li>
+            <li>Fluctuations in total hours are mostly extensive margin (E/U transitions), not intensive margin (hours per worker).</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- ========== DMP MATCHING ========== -->
+      <section id="matching" class="card anchor">
+        <h2>DMP Model: Matching Function</h2>
+        <p>The central friction: recruiting is <em>costly</em> and matching between workers and firms is not instantaneous.</p>
+
+        <article class="module-card">
+          <h3>Matching Technology</h3>
+          <div class="defn">
+            <strong>Matching Function:</strong> $\quad m = M(u, v) = \bar{\mu} v^\eta u^{1-\eta}, \quad 0 < \eta < 1$
+          </div>
+          <p>where $u$ is the measure of unemployed workers and $v$ is the number of job vacancies. The matching function captures <strong>coordination failures</strong> — if workers and firms could perfectly coordinate, all jobs would be filled.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Labor Market Tightness</h3>
+          <div class="defn">
+            <strong>Tightness:</strong> $\quad \theta \equiv \frac{v}{u}$
+          </div>
+          <p>Key derived probabilities:</p>
+          <ul>
+            <li><strong>Vacancy filling rate:</strong> $\mu(\theta) = \frac{m}{v} = \bar{\mu}\theta^{\eta-1}$ (decreasing in $\theta$).</li>
+            <li><strong>Job finding rate:</strong> $f(\theta) = \frac{m}{u} = \bar{\mu}\theta^{\eta}$ (increasing in $\theta$).</li>
+          </ul>
+          <div class="intuition">
+            <strong>Intuition:</strong> When the labor market is tight (high $\theta = v/u$), it's easier for workers to find jobs ($f(\theta) \uparrow$) but harder for firms to fill vacancies ($\mu(\theta) \downarrow$).
+          </div>
+        </article>
+      </section>
+
+      <!-- ========== DMP EQUILIBRIUM ========== -->
+      <section id="dmp-equilibrium" class="card anchor">
+        <h2>DMP Model: Equilibrium Unemployment</h2>
+
+        <article class="module-card">
+          <h3>Wage Determination</h3>
+          <p>Wages are determined by <strong>Nash bargaining</strong> between workers and firms, splitting the match surplus according to bargaining power.</p>
+          <p>In the simple static model, the equilibrium is determined by:</p>
+          <ul>
+            <li><strong>Job creation (free entry):</strong> Firms post vacancies until the expected cost equals the expected benefit: $\kappa = \mu(\theta) \cdot (\text{firm surplus})$.</li>
+            <li><strong>Wage curve:</strong> Workers' outside option (unemployment) and bargaining power determine the wage.</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Key Insights</h3>
+          <ul>
+            <li>There is <strong>equilibrium unemployment</strong> even though all workers are identical — some are matched, some are searching.</li>
+            <li>Unemployment responds to productivity shocks through changes in vacancy posting (labor demand) — consistent with the observation that unemployment is countercyclical.</li>
+            <li>Fluctuations in employment are driven by the <strong>extensive margin</strong> (E/U switches), as in the data.</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Phillips Curve Connection</h3>
+          <p>The DMP model provides <strong>microfoundations</strong> for the Phillips curve relationship: when output is above potential ($x_t > 0$), labor markets tighten ($\theta \uparrow$), wages rise, and firms pass higher costs into prices, generating inflation. This is the chain linking the output gap to inflation in the NKPC.</p>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="scrollspy.js"></script>
+</body>
+</html>

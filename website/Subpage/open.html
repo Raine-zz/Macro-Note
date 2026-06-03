@@ -1,0 +1,262 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open | Open Economy</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]], displayMath: [["\\[", "\\]"], ["$$", "$$"]] },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div><p class="brand-cn">Macro Study Notes</p><p class="brand-en">Xinyu Zhou</p></div>
+    </div>
+    <nav class="topnav">
+      <a href="../index.html">Overview</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="micro_foundation.html">Micro Foundations</a>
+      <a href="growth.html">Growth</a>
+      <a href="short_run.html">Short Run</a>
+      <a href="monetary.html">Monetary</a>
+      <a class="active" href="open.html">Open</a>
+      <a href="labor.html">Labor</a>
+      <a href="financial.html">Financial</a>
+      <a href="methods.html">Methods</a>
+    </nav>
+  </header>
+
+  <main class="layout with-sidebar">
+    <aside class="sidebar card">
+      <h2>Content</h2>
+      <p style="margin:0;color:var(--muted);font-size:0.92rem;">Click to navigate</p>
+      <ul class="toc">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#openness">Openness in Goods &amp; Financial Markets</a></li>
+        <li><a href="#exchange-rates">Exchange Rates</a></li>
+        <li><a href="#goods-market-open">Goods Market in Open Economy</a></li>
+        <li><a href="#marshall-lerner">Marshall-Lerner Condition</a></li>
+        <li><a href="#interest-parity">Interest Parity</a></li>
+        <li><a href="#mundell-fleming">Mundell-Fleming Model</a></li>
+        <li><a href="#policy-open">Policy in Open Economy</a></li>
+        <li><a href="#trilemma">The Trilemma</a></li>
+        <li><a href="#twin-deficits">Twin Deficits</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <section id="overview" class="hero card anchor">
+        <p class="tag">Module 6</p>
+        <h1>Open Economy Macroeconomics</h1>
+        <p>How do international trade and financial flows affect domestic macroeconomic outcomes? We extend the closed-economy framework to incorporate exchange rates, trade balances, and international capital mobility.</p>
+      </section>
+
+      <!-- ========== OPENNESS ========== -->
+      <section id="openness" class="card anchor">
+        <h2>Openness in Goods &amp; Financial Markets</h2>
+        <p>Three dimensions of openness:</p>
+        <ol>
+          <li><strong>Goods markets:</strong> Tariffs, quotas, trade agreements. Consumers choose between domestic and foreign goods.</li>
+          <li><strong>Financial markets:</strong> Capital controls, foreign asset ownership. Investors choose between domestic and foreign bonds.</li>
+          <li><strong>Factor markets:</strong> Firms choose production locations; workers choose where to work.</li>
+        </ol>
+      </section>
+
+      <!-- ========== EXCHANGE RATES ========== -->
+      <section id="exchange-rates" class="card anchor">
+        <h2>Exchange Rates</h2>
+
+        <article class="module-card">
+          <h3>Nominal Exchange Rate</h3>
+          <p>The nominal exchange rate $E$ is the price of domestic currency in terms of foreign currency (e.g., USD per GBP). Alternatively quoted as foreign currency per domestic unit.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Real Exchange Rate</h3>
+          <div class="defn">
+            <strong>Real Exchange Rate:</strong> $\quad \varepsilon \equiv \frac{E P}{P^*}$ — the relative price of domestic goods in terms of foreign goods.
+          </div>
+          <ul>
+            <li><strong>Real appreciation</strong> ($\varepsilon \uparrow$): domestic goods become relatively more expensive.</li>
+            <li><strong>Real depreciation</strong> ($\varepsilon \downarrow$): domestic goods become relatively cheaper.</li>
+          </ul>
+          <p style="color:var(--muted);font-size:0.88rem;">In countries with low and stable inflation, nominal and real exchange rates move closely together.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Multilateral Exchange Rates</h3>
+          <p>Bilateral exchange rates are aggregated into a trade-weighted multilateral (effective) exchange rate using trade shares as weights.</p>
+        </article>
+      </section>
+
+      <!-- ========== GOODS MARKET OPEN ========== -->
+      <section id="goods-market-open" class="card anchor">
+        <h2>Goods Market in Open Economy</h2>
+
+        <article class="module-card">
+          <h3>Demand for Domestic Goods</h3>
+          <p>Total demand for domestic goods:</p>
+          <div class="key-eq">
+            $Z \equiv C + I + G + X - \frac{IM}{\varepsilon}$
+          </div>
+          <p><strong>Key distinction:</strong> domestic demand for goods $\neq$ demand for domestic goods. Expenditure $C, I, G$ is on a mix of domestic and foreign goods.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Import and Export Functions</h3>
+          <ul>
+            <li><strong>Imports:</strong> $IM = IM(Y, \varepsilon)$ — increasing in domestic output and in the real exchange rate (foreign goods cheaper).</li>
+            <li><strong>Exports:</strong> $X = X(Y^*, \varepsilon)$ — increasing in foreign output, decreasing in the real exchange rate (domestic goods pricier abroad).</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- ========== MARSHALL-LERNER ========== -->
+      <section id="marshall-lerner" class="card anchor">
+        <h2>Marshall-Lerner Condition</h2>
+
+        <article class="module-card">
+          <h3>Net Exports and the Real Exchange Rate</h3>
+          <p>$NX(\varepsilon) \equiv X(Y^*, \varepsilon) - \frac{IM(Y, \varepsilon)}{\varepsilon}$</p>
+          <p>The real exchange rate enters in three places:</p>
+          <ol>
+            <li>Exports $X$ decreasing in $\varepsilon$ (substitution effect).</li>
+            <li>Imports $IM$ increasing in $\varepsilon$ (substitution effect).</li>
+            <li>Denominator $1/\varepsilon$ (valuation effect).</li>
+          </ol>
+          <div class="defn">
+            <strong>Marshall-Lerner Condition:</strong> A real depreciation ($\varepsilon \downarrow$) improves net exports if the sum of export and import demand elasticities exceeds 1. The valuation effect is smaller than the substitution effects.
+          </div>
+        </article>
+      </section>
+
+      <!-- ========== INTEREST PARITY ========== -->
+      <section id="interest-parity" class="card anchor">
+        <h2>Interest Parity Condition</h2>
+
+        <article class="module-card">
+          <h3>Uncovered Interest Parity (UIP)</h3>
+          <p>If domestic and foreign bonds are perfect substitutes (perfect capital mobility), expected returns must equalize:</p>
+          <div class="defn">
+            <strong>UIP:</strong> $\quad 1 + i_t = (1 + i_t^*) \frac{E_t}{E_{t+1}^e}$
+          </div>
+          <p>Rearranging for the exchange rate:</p>
+          <div class="key-eq">
+            $\displaystyle E_t = \frac{1+i_t}{1+i_t^*} \bar{E}^e$
+          </div>
+          <ul>
+            <li>Higher domestic $i_t$ $\Rightarrow$ $E_t \uparrow$ (domestic currency appreciates).</li>
+            <li>Higher foreign $i_t^*$ $\Rightarrow$ $E_t \downarrow$ (domestic currency depreciates).</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Approximation</h3>
+          <p>For small interest rates and expected depreciation:</p>
+          <p>$i_t \approx i_t^* + \frac{\bar{E}^e - E_t}{E_t}$ — the domestic rate equals the foreign rate plus expected depreciation.</p>
+        </article>
+      </section>
+
+      <!-- ========== MUNDELL-FLEMING ========== -->
+      <section id="mundell-fleming" class="card anchor">
+        <h2>Mundell-Fleming Model</h2>
+        <p>The open-economy IS-LM model with floating exchange rates, incorporating the interest parity condition.</p>
+
+        <article class="module-card">
+          <h3>Open-Economy IS Curve</h3>
+          <p>$Y = C(Y, T) + I(Y, i) + G + NX\!\left(Y, Y^*, \frac{1+i}{1+i^*}\bar{E}^e\right)$</p>
+          <p>Changes in $i$ affect the economy through <em>two</em> channels:</p>
+          <ol>
+            <li><strong>Direct:</strong> Through investment $I$.</li>
+            <li><strong>Indirect:</strong> Through exchange rate effects on net exports $NX$.</li>
+          </ol>
+          <p>The IS curve slopes down — higher $i$ reduces output via both channels.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>LM Curve</h3>
+          <p>As in the closed economy, the central bank sets: $i = \bar{i}$. The LM curve is horizontal at the policy rate.</p>
+        </article>
+      </section>
+
+      <!-- ========== POLICY IN OPEN ========== -->
+      <section id="policy-open" class="card anchor">
+        <h2>Monetary &amp; Fiscal Policy in Open Economy</h2>
+
+        <article class="module-card">
+          <h3>Monetary Contraction</h3>
+          <p>An increase in $i$ reduces output (shift along IS) and appreciates the currency (along the interest parity curve). Both channels reduce demand.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Fiscal Expansion</h3>
+          <p>An increase in $G$ shifts IS right, raising output. If the central bank keeps $i$ unchanged, the exchange rate remains unchanged. If the CB raises $i$, the currency appreciates — dampening the output expansion.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Fixed Exchange Rates</h3>
+          <p>Under a credible exchange rate peg ($E_t = \bar{E}^e = \bar{E}$):</p>
+          <p>Interest parity forces $i_t = i_t^*$ — the domestic interest rate equals the foreign rate. The central bank loses monetary policy independence for domestic stabilization.</p>
+        </article>
+      </section>
+
+      <!-- ========== TRILEMMA ========== -->
+      <section id="trilemma" class="card anchor">
+        <h2>The Mundell-Fleming Trilemma</h2>
+
+        <div class="theorem">
+          <strong>The Trilemma (Impossible Trinity):</strong> A country cannot simultaneously maintain:
+          <ol>
+            <li>Perfect international capital mobility</li>
+            <li>Independent domestic monetary policy</li>
+            <li>A fixed exchange rate</li>
+          </ol>
+          At most two of the three can hold.
+        </div>
+
+        <article class="module-card">
+          <h3>Implications</h3>
+          <ul>
+            <li><strong>US/Eurozone:</strong> Capital mobility + independent monetary policy $\Rightarrow$ floating exchange rates.</li>
+            <li><strong>Hong Kong:</strong> Fixed exchange rate + capital mobility $\Rightarrow$ no independent monetary policy.</li>
+            <li><strong>China (historically):</strong> Fixed exchange rate + independent policy $\Rightarrow$ capital controls.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- ========== TWIN DEFICITS ========== -->
+      <section id="twin-deficits" class="card anchor">
+        <h2>Savings, Investment &amp; Twin Deficits</h2>
+
+        <article class="module-card">
+          <h3>Fundamental Identity</h3>
+          <p>From $Y = C + I + G + NX$ and $S \equiv Y - T - C$:</p>
+          <div class="key-eq">
+            $NX = (S - I) + (T - G)$
+          </div>
+          <p>A trade surplus corresponds to excess of total saving over investment.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Twin Deficits Hypothesis</h3>
+          <p>If private saving $S - I$ remains constant, an increase in the government budget deficit ($T - G$ more negative) implies a deterioration of the trade balance — the "twin deficits." Empirically, the relationship is not always robust, as private saving may adjust endogenously.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Effects of Government Spending</h3>
+          <p>An increase in $G$ raises output but reduces net exports (trade deficit). The open-economy multiplier is <strong>smaller</strong> than the closed-economy multiplier because part of the increased demand leaks abroad through imports.</p>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="scrollspy.js"></script>
+</body>
+</html>

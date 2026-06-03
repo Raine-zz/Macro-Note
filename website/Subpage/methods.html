@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methods | Mathematical Toolkit</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]], displayMath: [["\\[", "\\]"], ["$$", "$$"]] },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div><p class="brand-cn">Macro Study Notes</p><p class="brand-en">Xinyu Zhou</p></div>
+    </div>
+    <nav class="topnav">
+      <a href="../index.html">Overview</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="micro_foundation.html">Micro Foundations</a>
+      <a href="growth.html">Growth</a>
+      <a href="short_run.html">Short Run</a>
+      <a href="monetary.html">Monetary</a>
+      <a href="open.html">Open</a>
+      <a href="labor.html">Labor</a>
+      <a href="financial.html">Financial</a>
+      <a class="active" href="methods.html">Methods</a>
+    </nav>
+  </header>
+
+  <main class="layout with-sidebar">
+    <aside class="sidebar card">
+      <h2>Content</h2>
+      <p style="margin:0;color:var(--muted);font-size:0.92rem;">Click to navigate</p>
+      <ul class="toc">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#loglin">Log-Linearization</a></li>
+        <li><a href="#ar1">AR(1) Processes</a></li>
+        <li><a href="#undetermined">Method of Undetermined Coefficients</a></li>
+        <li><a href="#rbc-solution">Application: RBC Solution</a></li>
+        <li><a href="#phase">Phase Diagrams</a></li>
+        <li><a href="#dp">Dynamic Programming</a></li>
+        <li><a href="#vfi">Value Function Iteration</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <section id="overview" class="hero card anchor">
+        <p class="tag">Module 9</p>
+        <h1>Mathematical Methods &amp; Tools</h1>
+        <p>Modern macroeconomics relies on a set of core mathematical tools: log-linearization for approximating models, the method of undetermined coefficients for solving linear rational expectations models, phase diagrams for analyzing dynamics, and dynamic programming for optimization.</p>
+      </section>
+
+      <!-- ========== LOG-LINEARIZATION ========== -->
+      <section id="loglin" class="card anchor">
+        <h2>Log-Linearization</h2>
+        <p>Log-linearization converts nonlinear dynamic models into linear systems that can be solved analytically or computationally.</p>
+
+        <article class="module-card">
+          <h3>Basic Principle</h3>
+          <p>For a scalar function $y_t = f(x_t)$ with steady state $\bar{y} = f(\bar{x})$:</p>
+          <p>$y_t - \bar{y} \approx f'(\bar{x})(x_t - \bar{x})$ &emsp; (level deviation)</p>
+          <p>In log-deviations $\hat{x}_t \equiv \ln(x_t/\bar{x}) \approx (x_t - \bar{x})/\bar{x}$:</p>
+          <div class="defn">
+            <strong>Log-linear approximation:</strong> $\quad \hat{y}_t \approx \frac{f'(\bar{x})\bar{x}}{f(\bar{x})}\hat{x}_t$
+          </div>
+          <p>The coefficient is an <strong>elasticity</strong> — interpretation is unit-free.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Examples</h3>
+          <table>
+            <tr><th>Function</th><th>Log-Linear Form</th></tr>
+            <tr><td>$y = x^a z^b$</td><td>$\hat{y} = a\hat{x} + b\hat{z}$ (exact!)</td></tr>
+            <tr><td>$y = ax + bz$</td><td>$\hat{y} = \frac{a\bar{x}}{a\bar{x}+b\bar{z}}\hat{x} + \frac{b\bar{z}}{a\bar{x}+b\bar{z}}\hat{z}$</td></tr>
+            <tr><td>$y = (ax + b)^c$</td><td>$\hat{y} = c\frac{a\bar{x}}{a\bar{x}+b}\hat{x}$</td></tr>
+            <tr><td>$y = f(x_1, \ldots, x_n)$</td><td>$\hat{y} = \sum_{i=1}^n \frac{f_{x_i}(\bar{x})\bar{x}_i}{f(\bar{x})}\hat{x}_i$</td></tr>
+          </table>
+        </article>
+
+        <article class="module-card">
+          <h3>Application: Consumption Euler</h3>
+          <p>Nonlinear: $\quad u'(c_t) = \beta \mathbb{E}_t\{u'(c_{t+1}) R_{t+1}\}$</p>
+          <p>Log-linearized (CRRA): $\quad \mathbb{E}_t\{\Delta \hat{c}_{t+1}\} = \frac{1}{\sigma}\hat{R}_{t+1}$</p>
+          <p>where $\sigma \equiv -u''(\bar{c})\bar{c}/u'(\bar{c})$ is the coefficient of relative risk aversion.</p>
+        </article>
+      </section>
+
+      <!-- ========== AR(1) ========== -->
+      <section id="ar1" class="card anchor">
+        <h2>AR(1) Processes</h2>
+
+        <article class="module-card">
+          <h3>Definition</h3>
+          <div class="key-eq">
+            $x_{t+1} = (1 - \phi)\bar{x} + \phi x_t + \varepsilon_{t+1}, \quad \varepsilon_t \sim \text{IID } N(0, \sigma_\varepsilon^2)$
+          </div>
+          <p>$\phi$ is the persistence parameter; $|\phi| < 1$ for stationarity.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Key Properties</h3>
+          <p>Iterating forward from $x_0$:</p>
+          <p>$x_t = \bar{x} + \phi^t(x_0 - \bar{x}) + \sum_{i=0}^{t-1} \phi^i \varepsilon_{t-i}$</p>
+          <ul>
+            <li><strong>Mean:</strong> $\mathbb{E}[x_t] \to \bar{x}$ as $t \to \infty$.</li>
+            <li><strong>Stationary variance:</strong> $\text{Var}(x_\infty) = \frac{\sigma_\varepsilon^2}{1 - \phi^2}$.</li>
+            <li><strong>Impulse response:</strong> $\frac{\partial x_{t+j}}{\partial \varepsilon_t} = \phi^j$ — decays geometrically.</li>
+          </ul>
+          <p style="color:var(--muted);font-size:0.88rem;">A persistent process ($\phi$ close to 1) has high long-run variance even with small innovations.</p>
+        </article>
+      </section>
+
+      <!-- ========== UNDETERMINED COEFFICIENTS ========== -->
+      <section id="undetermined" class="card anchor">
+        <h2>Method of Undetermined Coefficients</h2>
+        <p>This method solves linear rational expectations models by guessing a linear policy function in the state variables and solving for the coefficients.</p>
+
+        <article class="module-card">
+          <h3>General Procedure</h3>
+          <ol class="derivation">
+            <li>Write the model as a system of linear(ized) stochastic difference equations in state variables $s_t$ and control variables $c_t$.</li>
+            <li>Guess that controls are linear functions of states: $c_t = \Psi_{cs} s_t$.</li>
+            <li>Guess the law of motion for states: $s_{t+1} = \Psi_{ss} s_t + \Psi_{s\varepsilon} \varepsilon_{t+1}$.</li>
+            <li>Substitute guesses into the model equations.</li>
+            <li>Collect terms and solve for the unknown coefficient matrices $\Psi$.</li>
+          </ol>
+        </article>
+
+        <article class="module-card">
+          <h3>Key Insight: Recursive Structure</h3>
+          <p>The coefficients governing the response to the endogenous state ($\Psi_{ss}$, $\Psi_{cs}$) can typically be solved <strong>first</strong>, independently of the response to exogenous shocks ($\Psi_{s\varepsilon}$). This gives a recursive structure to the problem.</p>
+        </article>
+      </section>
+
+      <!-- ========== APPLICATION: RBC ========== -->
+      <section id="rbc-solution" class="card anchor">
+        <h2>Application: Solving the Stochastic Growth Model</h2>
+
+        <article class="module-card">
+          <h3>Log-Linearized Model</h3>
+          <p>The stochastic growth model with CRRA utility $u(c) = \frac{c^{1-\sigma}}{1-\sigma}$, Cobb-Douglas production $f(k) = k^\alpha$, and AR(1) productivity:</p>
+          <p>$\bar{c}\hat{c}_t + \bar{k}\hat{k}_{t+1} = \bar{y}\hat{z}_t + \frac{1}{\beta}\bar{k}\hat{k}_t$ &emsp; (resource constraint)</p>
+          <p>$\mathbb{E}_t\{\Delta\hat{c}_{t+1}\} = \frac{\beta\bar{r}}{\sigma}\mathbb{E}_t[\hat{z}_{t+1} + (\alpha-1)\hat{k}_{t+1}]$ &emsp; (Euler)</p>
+          <p>$\hat{z}_{t+1} = \phi\hat{z}_t + \varepsilon_{t+1}$ &emsp; (productivity AR(1))</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Guess and Solve</h3>
+          <p>Guess: $\hat{k}_{t+1} = \psi_{kk}\hat{k}_t + \psi_{kz}\hat{z}_t$, $\hat{c}_t = \psi_{ck}\hat{k}_t + \psi_{cz}\hat{z}_t$.</p>
+
+          <p><strong>Step 1:</strong> The capital coefficients $\psi_{kk}$ solve a quadratic:</p>
+          <div class="key-eq">
+            $\displaystyle \psi_{kk}^2 - \left(1 - \frac{\beta\bar{r}(\alpha-1)}{\sigma} + \frac{\bar{c}}{\bar{k}}\right)\psi_{kk} + \frac{1}{\beta} = 0$
+          </div>
+          <p>Choose the stable root ($\psi_{kk} < 1$) for a unique convergent equilibrium.</p>
+
+          <p><strong>Step 2:</strong> Recover $\psi_{ck} = \frac{1}{\beta} - \frac{\bar{k}}{\bar{c}}\psi_{kk}$.</p>
+
+          <p><strong>Step 3:</strong> Solve for $\psi_{kz}, \psi_{cz}$ using the response to the exogenous state.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Impulse Response Function</h3>
+          <p>For a +1% productivity shock ($\varepsilon_0 = 0.01$):</p>
+          <ul>
+            <li>Output rises on impact (productivity + capital response).</li>
+            <li>Consumption rises (wealth effect).</li>
+            <li>Capital rises gradually then returns to steady state (hump-shaped).</li>
+            <li>All variables converge back to steady state as the shock dies out ($\phi^t \to 0$).</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- ========== PHASE DIAGRAMS ========== -->
+      <section id="phase" class="card anchor">
+        <h2>Phase Diagrams</h2>
+
+        <article class="module-card">
+          <h3>Two-Variable Systems</h3>
+          <p>For a system $\dot{x} = f(x, y)$, $\dot{y} = g(x, y)$:</p>
+          <ol>
+            <li>Plot the <strong>nullclines</strong>: $\dot{x} = 0$ and $\dot{y} = 0$.</li>
+            <li>The intersection is the steady state.</li>
+            <li>Draw arrows indicating direction of motion in each region.</li>
+            <li>Identify the saddle path — the unique trajectory converging to steady state.</li>
+          </ol>
+        </article>
+
+        <article class="module-card">
+          <h3>RCK Phase Diagram</h3>
+          <ul>
+            <li>$\dot{k} = 0$: $c = f(k) - \delta k$ (hump-shaped curve).</li>
+            <li>$\dot{c} = 0$: $f'(k) = \delta + \rho$ (vertical line at modified golden rule $k^*$).</li>
+            <li>The saddle path is the unique trajectory that satisfies the transversality condition.</li>
+            <li>For any $k_0$, there is exactly one $c_0$ on the saddle path.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- ========== DP ========== -->
+      <section id="dp" class="card anchor">
+        <h2>Dynamic Programming</h2>
+
+        <article class="module-card">
+          <h3>Bellman Equation</h3>
+          <p>A recursive formulation of the infinite-horizon optimization problem:</p>
+          <div class="defn">
+            <strong>Bellman Equation:</strong> $\quad V(s) = \max_{a \in \Gamma(s)} \{ F(s, a) + \beta V(s') \}$
+          </div>
+          <p>where $s$ is the state, $a$ is the choice (control), $s' = g(s, a)$ is the transition, and $V(s)$ is the <strong>value function</strong> — the maximized lifetime utility starting from state $s$.</p>
+          <p>The optimal policy function $a = h(s)$ satisfies the first-order and envelope conditions, recovering the Euler equation.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Why DP?</h3>
+          <ul>
+            <li>Turns an infinite-dimensional problem (choose infinite sequence) into a finite-dimensional one (choose today's action + continuation value).</li>
+            <li>Works naturally with uncertainty (expectations operator inside the Bellman equation).</li>
+            <li>Foundation for computational solution methods (value function iteration, policy iteration).</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- ========== VFI ========== -->
+      <section id="vfi" class="card anchor">
+        <h2>Value Function Iteration (VFI)</h2>
+
+        <article class="module-card">
+          <h3>Algorithm</h3>
+          <ol class="derivation">
+            <li>Discretize the state space into a grid of $N$ points.</li>
+            <li>Make an initial guess for the value function $V^{(0)}(s)$ at each grid point.</li>
+            <li>For each state $s$, solve: $V^{(n+1)}(s) = \max_{a} \{ F(s, a) + \beta V^{(n)}(g(s, a)) \}$.</li>
+            <li>Check convergence: if $\|V^{(n+1)} - V^{(n)}\| < \text{tol}$, stop. Otherwise, update and repeat.</li>
+          </ol>
+          <p style="color:var(--muted);font-size:0.88rem;">By the Contraction Mapping Theorem (Banach fixed-point theorem), VFI converges to the unique true value function for any initial guess.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Contraction Mapping</h3>
+          <div class="theorem">
+            <strong>Blackwell's Sufficient Conditions:</strong> The Bellman operator $T$ defined by $(TV)(s) = \max_a \{F(s,a) + \beta V(g(s,a))\}$ is a contraction mapping with modulus $\beta$ if: (1) $T$ is monotone, and (2) $T$ satisfies discounting. Then $V = TV$ has a unique solution.
+          </div>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="scrollspy.js"></script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Short Run | Fluctuations & Policy</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]], displayMath: [["\\[", "\\]"], ["$$", "$$"]] },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot" aria-hidden="true"></div>
+      <div><p class="brand-cn">Macro Study Notes</p><p class="brand-en">Xinyu Zhou</p></div>
+    </div>
+    <nav class="topnav">
+      <a href="../index.html">Overview</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="micro_foundation.html">Micro Foundations</a>
+      <a href="growth.html">Growth</a>
+      <a class="active" href="short_run.html">Short Run</a>
+      <a href="monetary.html">Monetary</a>
+      <a href="open.html">Open</a>
+      <a href="labor.html">Labor</a>
+      <a href="financial.html">Financial</a>
+      <a href="methods.html">Methods</a>
+    </nav>
+  </header>
+
+  <main class="layout with-sidebar">
+    <aside class="sidebar card">
+      <h2>Content</h2>
+      <p style="margin:0;color:var(--muted);font-size:0.92rem;">Click to navigate</p>
+      <ul class="toc">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#goods-market">Goods Market &amp; IS Curve</a></li>
+        <li><a href="#financial-market">Financial Markets &amp; LM</a></li>
+        <li><a href="#islm">IS-LM Model</a></li>
+        <li><a href="#labour-market">Labour Market &amp; Phillips Curve</a></li>
+        <li><a href="#islmpc">IS-LM-PC Model</a></li>
+        <li><a href="#dad-das">Dynamic AS-AD Model</a></li>
+        <li><a href="#shocks">Shocks in DAS-DAD</a></li>
+        <li><a href="#taylor">Taylor Principle</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <section id="overview" class="hero card anchor">
+        <p class="tag">Module 4</p>
+        <h1>Short-Run Fluctuations</h1>
+        <p>While growth theory explains long-run trends, short-run macroeconomics explains business cycles — why output, employment, and inflation deviate from trend. We build from the goods market to the full dynamic AS-AD model.</p>
+      </section>
+
+      <!-- ========== GOODS MARKET & IS ========== -->
+      <section id="goods-market" class="card anchor">
+        <h2>Goods Market &amp; the IS Curve</h2>
+
+        <article class="module-card">
+          <h3>Consumption Function</h3>
+          <p>The key behavioral assumption: consumption depends on disposable income.</p>
+          <div class="key-eq">
+            $C = c_0 + c_1(Y - T), \quad c_0 > 0, \;\; 0 < c_1 < 1$
+          </div>
+          <p>$c_1$ is the <strong>marginal propensity to consume</strong> (MPC) — how much consumption increases for each additional unit of disposable income.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Equilibrium Output &amp; the Multiplier</h3>
+          <p>In a closed economy: $Y = C + I + G$. Substituting $C = c_0 + c_1(Y - T)$:</p>
+          <div class="defn">
+            <strong>Equilibrium Output:</strong> $\quad Y = \frac{1}{1 - c_1}(c_0 - c_1 T + I + G)$
+          </div>
+          <p>The <strong>multiplier</strong> $\frac{1}{1-c_1} > 1$: an increase in autonomous spending raises output by more than one-for-one.</p>
+          <div class="intuition">
+            <strong>Intuition:</strong> First round: $\Delta G$ increases demand by $\Delta G$ and output by $\Delta G$. This raises income by $\Delta G$, which raises consumption by $c_1\Delta G$ (second round). This additional spending raises income further, etc. After $n$ rounds: $1 + c_1 + c_1^2 + \cdots + c_1^{n-1} \to \frac{1}{1-c_1}$.
+          </div>
+        </article>
+
+        <article class="module-card">
+          <h3>Endogenous Investment &amp; the IS Curve</h3>
+          <p>Make investment depend on output $Y$ and interest rate $i$:</p>
+          <p>$I = I(Y, i) = b_0 + b_1 Y - b_2 i, \quad b_0, b_1, b_2 > 0$</p>
+          <p>Investment rises with output (accelerator effect) and falls with the interest rate (cost of borrowing).</p>
+          <p>Solving goods market equilibrium gives the <strong>IS curve</strong>:</p>
+          <div class="defn">
+            <strong>IS Curve:</strong> Negative relationship between output $Y$ and interest rate $i$ in goods market equilibrium. Higher $i$ reduces investment, lowering equilibrium output.
+          </div>
+        </article>
+      </section>
+
+      <!-- ========== FINANCIAL MARKETS & LM ========== -->
+      <section id="financial-market" class="card anchor">
+        <h2>Financial Markets &amp; the LM Curve</h2>
+
+        <article class="module-card">
+          <h3>Money Demand</h3>
+          <p>Money demand depends positively on nominal income (transactions motive) and negatively on the interest rate (opportunity cost):</p>
+          <div class="key-eq">
+            $M^d = P \cdot Y \cdot L(i)$
+          </div>
+          <p>where $L(i)$ is decreasing in $i$.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>LM Curve</h3>
+          <p>Money supply $M^s = \bar{M}$ set exogenously by the central bank. Equilibrium $M^s = M^d$ gives:</p>
+          <div class="defn">
+            <strong>LM Curve:</strong> Positive relationship between $Y$ and $i$ in money market equilibrium. Higher $Y$ increases money demand, requiring a higher $i$ to restore equilibrium.
+          </div>
+          <p style="color:var(--muted);font-size:0.88rem;">Modern central banks set interest rates directly (Taylor rule), making the LM curve horizontal — but the IS-LM framework remains useful for intuition.</p>
+        </article>
+      </section>
+
+      <!-- ========== IS-LM ========== -->
+      <section id="islm" class="card anchor">
+        <h2>IS-LM Model</h2>
+        <p>The IS-LM model jointly determines output and the interest rate in the short run, assuming fixed prices.</p>
+
+        <article class="module-card">
+          <h3>Fiscal Policy in IS-LM</h3>
+          <ul>
+            <li><strong>Increase in $G$:</strong> IS shifts right. Both $Y$ and $i$ rise. Higher $i$ crowds out some private investment.</li>
+            <li><strong>Tax cut:</strong> IS shifts right through higher disposable income and consumption.</li>
+            <li><strong>Crowding out:</strong> The rise in $i$ from fiscal expansion partially offsets the initial increase in output.</li>
+          </ul>
+        </article>
+
+        <article class="module-card">
+          <h3>Monetary Policy in IS-LM</h3>
+          <ul>
+            <li><strong>Increase in money supply:</strong> LM shifts down. $Y$ rises, $i$ falls.</li>
+            <li><strong>Monetary transmission:</strong> Lower $i$ stimulates investment, raising output through the multiplier.</li>
+            <li><strong>Liquidity trap:</strong> At very low interest rates, money demand becomes perfectly elastic — LM is flat, monetary expansion has no further effect on $i$.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- ========== PHILLIPS CURVE ========== -->
+      <section id="labour-market" class="card anchor">
+        <h2>Labour Market &amp; the Phillips Curve</h2>
+
+        <article class="module-card">
+          <h3>Wage and Price Setting</h3>
+          <p><strong>Wage setting:</strong> $W = P^e F(u, z)$, wages depend on expected prices, unemployment (negatively), and institutional factors $z$.</p>
+          <p><strong>Price setting:</strong> $P = (1 + m)W$, firms set prices as a markup over wages.</p>
+          <p>Combining gives the <strong>natural rate of unemployment</strong> $u_n$:</p>
+          <p>$F(u_n, z) = \frac{1}{1+m}$</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Phillips Curve</h3>
+          <p>The relationship between inflation and unemployment:</p>
+          <div class="defn">
+            <strong>Phillips Curve:</strong> $\quad \pi_t = \pi_t^e + (m + z) - \alpha u_t$
+          </div>
+          <p>With anchored expectations $\pi_t^e = \bar{\pi}$, this becomes:</p>
+          <p>$\pi_t - \bar{\pi} = -\alpha(u_t - u_n)$</p>
+          <p style="color:var(--muted);font-size:0.88rem;">Inflation is above expected inflation when unemployment is below the natural rate.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Expectations-Augmented Phillips Curve</h3>
+          <p>Modern formulation: $\pi_t = \pi_t^e - \alpha(u_t - u_n)$</p>
+          <p>If $\pi_t^e = \pi_{t-1}$ (adaptive expectations): $\pi_t - \pi_{t-1} = -\alpha(u_t - u_n)$</p>
+          <p style="color:var(--muted);font-size:0.88rem;">The change in inflation is negatively related to the unemployment gap. To reduce inflation, unemployment must be above $u_n$ for a sustained period.</p>
+        </article>
+      </section>
+
+      <!-- ========== IS-LM-PC ========== -->
+      <section id="islmpc" class="card anchor">
+        <h2>IS-LM-PC Model</h2>
+        <p>The IS-LM-PC model integrates the short run (IS-LM) with the medium run (Phillips Curve), showing how the economy adjusts over time.</p>
+
+        <article class="module-card">
+          <h3>Three Equations</h3>
+          <ol class="derivation">
+            <li><strong>IS:</strong> $Y = C(Y-T) + I(Y, i) + G$</li>
+            <li><strong>LM:</strong> $i = \bar{i}$ (central bank sets rate)</li>
+            <li><strong>PC:</strong> $\pi_t - \pi_t^e = -\alpha(u_t - u_n)$</li>
+          </ol>
+          <p>Using Okun's Law $u_t - u_n = -\beta(Y_t - Y_n)$ to replace unemployment with output gap:</p>
+          <div class="key-eq">
+            $\pi_t - \pi_t^e = \alpha\beta(Y_t - Y_n) \equiv \kappa(Y_t - Y_n)$
+          </div>
+        </article>
+
+        <article class="module-card">
+          <h3>Adjustment Dynamics</h3>
+          <p>If $Y > Y_n$, inflation rises. This prompts the central bank to raise $i$, shifting IS left, reducing $Y$. This continues until $Y = Y_n$.</p>
+          <p><strong>In the medium run</strong>: $Y = Y_n$, $u = u_n$, $\pi$ is stable at $\bar{\pi}$. Money is neutral in the medium run.</p>
+        </article>
+      </section>
+
+      <!-- ========== DAS-DAD ========== -->
+      <section id="dad-das" class="card anchor">
+        <h2>Dynamic AS-AD Model</h2>
+        <p>The DAS-DAD model generalizes IS-LM-PC to include dynamics of inflation expectations and explicit monetary policy rules.</p>
+
+        <article class="module-card">
+          <h3>Five Equations</h3>
+          <ol class="derivation">
+            <li><strong>Demand for Goods (DAD):</strong> $Y_t = \bar{Y} - \alpha(r_t - \rho) + \varepsilon_t$<br>
+              <span style="color:var(--muted);">Output depends negatively on the real interest rate gap.</span></li>
+            <li><strong>Real Interest Rate (Fisher):</strong> $r_t = i_t - E_t\pi_{t+1}$</li>
+            <li><strong>Phillips Curve (DAS):</strong> $\pi_t = E_{t-1}\pi_t + \phi(Y_t - \bar{Y}) + v_t$</li>
+            <li><strong>Adaptive Expectations:</strong> $E_t\pi_{t+1} = \pi_t$</li>
+            <li><strong>Monetary Policy (Taylor Rule):</strong> $i_t = \pi_t + \rho + \theta_\pi(\pi_t - \pi^*) + \theta_Y(Y_t - \bar{Y})$</li>
+          </ol>
+        </article>
+
+        <article class="module-card">
+          <h3>Reduced Form: DAD and DAS</h3>
+          <p>Substituting the Taylor rule into the IS curve yields the DAD equation:</p>
+          <div class="defn">
+            <strong>DAD:</strong> $\quad Y_t = \bar{Y} - \frac{\alpha\theta_\pi}{1+\alpha\theta_Y}(\pi_t - \pi^*) + \frac{1}{1+\alpha\theta_Y}\varepsilon_t$
+          </div>
+          <div class="defn">
+            <strong>DAS:</strong> $\quad \pi_t = \pi_{t-1} + \phi(Y_t - \bar{Y}) + v_t$
+          </div>
+          <p>The DAD is downward-sloping in $(Y, \pi)$ space. The DAS is upward-sloping.</p>
+        </article>
+      </section>
+
+      <!-- ========== SHOCKS ========== -->
+      <section id="shocks" class="card anchor">
+        <h2>Shocks in DAS-DAD</h2>
+
+        <article class="module-card">
+          <h3>Demand Shocks ($\varepsilon_t$)</h3>
+          <p>A positive demand shock shifts DAD right. On impact, both $Y$ and $\pi$ rise. As inflation expectations adjust upward (DAS shifts up), output gradually returns to $\bar{Y}$ while inflation remains elevated. Once the shock disappears, DAD returns to original position, output falls below potential, and inflation is gradually squeezed out.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Supply Shocks ($v_t$)</h3>
+          <p>A positive supply shock (e.g., oil price increase) shifts DAS up. On impact, $\pi$ rises <em>and</em> $Y$ falls — <strong>stagflation</strong>. If transitory, DAS eventually shifts back. The output-inflation trade-off depends on the DAD slope: steeper DAD means supply shocks cause larger inflation changes and smaller output changes.</p>
+        </article>
+
+        <article class="module-card">
+          <h3>Change in Inflation Target $\pi^*$</h3>
+          <p>If the central bank reduces $\pi^*$, the DAD shifts left. On impact: output falls, inflation begins to decline (disinflationary recession). As inflation expectations fall, DAS shifts down, and output gradually recovers. The sacrifice ratio measures the cumulative output loss per percentage point of disinflation.</p>
+        </article>
+      </section>
+
+      <!-- ========== TAYLOR PRINCIPLE ========== -->
+      <section id="taylor" class="card anchor">
+        <h2>Monetary Policy Implications</h2>
+
+        <article class="module-card">
+          <h3>Trade-off Between Output and Inflation Volatility</h3>
+          <p>The slope of DAD determines the division of supply shock effects:</p>
+          <div class="key-eq">
+            $\displaystyle \frac{d\pi}{dY}\bigg|_{DAD} = -\frac{1+\alpha\theta_Y}{\alpha\theta_\pi}$
+          </div>
+          <ul>
+            <li>Large $\theta_\pi$ makes DAD flat: small $\pi$ variance, large $Y$ variance.</li>
+            <li>Large $\theta_Y$ makes DAD steep: small $Y$ variance, large $\pi$ variance.</li>
+          </ul>
+          <p style="color:var(--muted);font-size:0.88rem;">The Fed (dual mandate) may prefer a different $\theta_Y$ vs $\theta_\pi$ mix than the ECB (price stability mandate).</p>
+        </article>
+
+        <article class="module-card">
+          <h3>The Taylor Principle</h3>
+          <div class="theorem">
+            <strong>Taylor Principle:</strong> For stable inflation dynamics, the nominal interest rate must increase more than one-for-one with inflation:
+            $\quad \frac{di}{d\pi} = 1 + \theta_\pi > 1 \;\Leftrightarrow\; \theta_\pi > 0$
+          </div>
+          <p>If $\theta_\pi > 0$, the real interest rate rises when inflation rises, which dampens demand and stabilizes inflation. If $\theta_\pi < 0$, the real rate falls when inflation rises (the real rate goes the wrong way) — inflation becomes unstable and can spiral out of control.</p>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="scrollspy.js"></script>
+</body>
+</html>
